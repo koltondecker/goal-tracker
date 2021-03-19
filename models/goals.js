@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 isNumber: true,
                 notNull: {
-                    msg: 'User ID must be an integer'
+                    msg: "User ID must be an integer"
                 },
             }
         },
@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 isNumber: true,
                 notNull: {
-                    msg: 'Your goal must be an integer'
+                    msg: "Your goal must be an integer"
                 },
             }
         },
@@ -38,11 +38,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
-    // Associating goals with milestones
+    // Associating goals with milestones table
     goals.associate = (models) => {
         //when a goal is deleted, so are the milestones
         goal.hasMany(models.milestones, {
-            onDelete: 'cascade',
+            onDelete: "cascade",
         });
     };
     return goals;
