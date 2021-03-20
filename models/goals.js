@@ -1,17 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
     //define goals model (table)
     const goals = sequelize.define("goals", {
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isNumber: true,
-                notNull: {
-                    msg: "User ID must be an integer"
-                },
-            }
-        },
+        // userId: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     unique: true,
+        //     validate: {
+        //         isNumber: true,
+        //         notNull: {
+        //             msg: "User ID must be an integer"
+        //         },
+        //     }
+        // },
         goalName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -41,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
     // Associating goals with milestones table
     goals.associate = (models) => {
         //when a goal is deleted, so are their milestones
-        goal.hasMany(models.milestones, {
+        goals.hasMany(models.milestones, {
             onDelete: "cascade",
         });
     };
