@@ -40,7 +40,7 @@ module.exports = function (sequelize, DataTypes) {
     });
     // Associating goals with milestones table
     goals.associate = (models) => {
-        //when a goal is deleted, so are the milestones
+        //when a goal is deleted, so are their milestones
         goal.hasMany(models.milestones, {
             onDelete: "cascade",
         });
