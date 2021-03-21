@@ -30,6 +30,34 @@ module.exports = function(app) {
       });
   });
 
+  // Route to add a new goal to a user. 
+  app.post("/api/new_goal", (req, res) => {
+    console.log(typeof req.user.id, typeof req.body.goalName, typeof parseInt(req.body.goalNumber), typeof req.body.doBy);
+    db.Goal.create({
+      goalName: req.body.goalName,
+      goalNumber: parseInt(req.body.goalNumber),
+      doBy: new Date(req.body.doBy),
+      UserId: req.user.id,
+    })
+    .then(() => {
+      res.json({ id: req.user.id });
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
+
+  app.post("/api/new_milestone", (req, res) => {
+    db.milestones.create({
+      goalId: req.body.goalId,
+      numberDone: req.body.numberDone,
+      doneBy: req.body.doneBy
+    })
+    .then(() => {
+      res.json({ id: req.body.id });
+    });
+  });
+
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
