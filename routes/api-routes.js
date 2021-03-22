@@ -32,7 +32,7 @@ module.exports = function(app) {
 
   // Route to add a new goal to a user. 
   app.post("/api/new_goal", (req, res) => {
-    console.log(typeof req.user.id, typeof req.body.goalName, typeof parseInt(req.body.goalNumber), typeof req.body.doBy);
+    console.log(req.user.id, req.body.goalName, parseInt(req.body.goalNumber), req.body.doBy);
     db.Goal.create({
       goalName: req.body.goalName,
       goalNumber: parseInt(req.body.goalNumber),
@@ -48,13 +48,16 @@ module.exports = function(app) {
   });
 
   app.post("/api/new_milestone", (req, res) => {
-    db.milestones.create({
+    db.Milestone.create({
       goalId: req.body.goalId,
       numberDone: req.body.numberDone,
       doneBy: req.body.doneBy
     })
     .then(() => {
-      res.json({ id: req.body.id });
+      res.json({ id: req.user.id });
+    })
+    .catch(err => {
+      res.status(401).json(err);
     });
   });
 
