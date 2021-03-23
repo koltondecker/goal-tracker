@@ -8,9 +8,10 @@ module.exports = function (app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
+    console.log(req.user.email);
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   });
 
@@ -112,18 +113,6 @@ module.exports = function (app) {
         id: req.user.id
       });
     }
-  }).then(() => {
-    db.Users.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
-  }).then(() => {
-    res.render("dashboard", {
-      user: req.User,
-      email: req.email,
-      nickname: req.nickname,
-    });
   });
 
 //PUT route for updating milestone

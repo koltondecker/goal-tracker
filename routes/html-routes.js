@@ -31,10 +31,10 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/homepage", isAuthenticated, (req, res) => {
     // res.sendFile(path.join(__dirname, "../public/homepage.html"));
-    res.render("homepage");
+    res.render("homepage", {"email": req.user.email});
   });
 
   app.get("/dashboard", isAuthenticated, (req, res) => {
-    res.render("dashboard");
+    res.render("dashboard", {"email": req.user.email});
   });
 };
