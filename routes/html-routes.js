@@ -35,6 +35,6 @@ module.exports = function(app) {
   });
 
   app.get("/dashboard", isAuthenticated, (req, res) => {
-    res.render("dashboard", {"email": req.user.email});
+    res.render("dashboard", {"firstName": req.user.firstName, "lastName": req.user.lastName});
   });
 };
