@@ -35,9 +35,9 @@ module.exports = function(sequelize, DataTypes) {
   //NOT SURE IF THIS IS CORRECT - BUT I THINK THIS IS NEEDED TO ASSOCIATE THE USER TABLE WITH GOAL TABLE (USER HAS MANY GOALS)
   User.associate = (models) => {
     //when a user is deleted, so are their goals
-    User.hasMany(models.goals, {
+    User.hasMany(models.Goal, {
         onDelete: "cascade",
     });
-};
+  };
   return User;
 };

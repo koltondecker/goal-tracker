@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     //define goals model (table)
-    const goals = sequelize.define("goals", {
+    const Goal = sequelize.define("Goal", {
         // userId: {
         //     type: DataTypes.INTEGER,
         //     allowNull: false,
@@ -16,22 +16,21 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isString: true,
-                len: (2, 25),
+                len: [2, 25],
             }
         },
         goalNumber: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                isNumber: true,
+                isInt: true,
                 notNull: {
                     msg: "Your goal must be an integer"
                 },
             }
         },
         doBy: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 isDate: true
@@ -39,11 +38,11 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     // Associating goals with milestones table
-    goals.associate = (models) => {
+    Goal.associate = (models) => {
         //when a goal is deleted, so are their milestones
-        goals.hasMany(models.milestones, {
+        Goal.hasMany(models.Milestone, {
             onDelete: "cascade",
         });
     };
-    return goals;
+    return Goal;
 };
