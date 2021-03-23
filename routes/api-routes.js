@@ -18,10 +18,10 @@ module.exports = function (app) {
       }
     })
     .then(() => {
-      console.log(req.user.email);
+      const email = JSON.stringify(req.user.email);
       res.render("dashboard", {
         // user: req.User,
-        email: req.user.email,
+        email: email,
         // nickname: req.nickname,
       });
 
