@@ -8,9 +8,23 @@ module.exports = function (app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user.id
+    // res.json({
+    //   email: req.user.email,
+    //   id: req.user.id
+    // });
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    })
+    .then(() => {
+      console.log(req.user.email);
+      res.render("dashboard", {
+        // user: req.User,
+        email: req.user.email,
+        // nickname: req.nickname,
+      });
+
     });
   });
 
@@ -62,36 +76,36 @@ module.exports = function (app) {
       });
   });
 
-    //Route to view all goals for a user.
-    app.get("/api/all_goals", (req, res) => {
-      db.User.findAll({
-        where: {
-          id: req.user.id
-        },
-        include: [db.Goal]
-      })
-      .then((response) => {
-        res.send({response});
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
+  //Route to view all goals for a user.
+  app.get("/api/all_goals", (req, res) => {
+    db.User.findAll({
+      where: {
+        id: req.user.id
+      },
+      include: [db.Goal]
+    })
+    .then((response) => {
+      res.send({response});
+    })
+    .catch(err => {
+      res.status(401).json(err);
     });
-  
-    //Route to view all milestones for a given goal.
-    app.get("/api/all_milestones/:goalId", (req, res) => {
-      db.Milestone.findAll({
-        where: {
-          GoalId: parseInt(req.params.goalId)
-        }
-      })
-      .then((response) => {
-        res.send({response});
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
+  });
+
+  //Route to view all milestones for a given goal.
+  app.get("/api/all_milestones/:goalId", (req, res) => {
+    db.Milestone.findAll({
+      where: {
+        GoalId: parseInt(req.params.goalId)
+      }
+    })
+    .then((response) => {
+      res.send({response});
+    })
+    .catch(err => {
+      res.status(401).json(err);
     });
+  });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
@@ -112,28 +126,16 @@ module.exports = function (app) {
         id: req.user.id
       });
     }
-  }).then(() => {
-    db.Users.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
-  }).then(() => {
-    res.render("dashboard", {
-      user: req.User,
-      email: req.email,
-      nickname: req.nickname,
-    });
   });
 
-//Put route for updating goal
-app.put("/api/update_goal/:id", (req, res) => {
-  db.Goal.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  }).then((dbTracker) => res.json(dbTracker));
-});
+  //Put route for updating goal
+  app.put("/api/update_goal/:id", (req, res) => {
+    db.Goal.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
 
 //PUT route for updating milestone
   app.put("/api/update_milestone/:id", (req, res) => {
