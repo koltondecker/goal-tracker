@@ -31,6 +31,38 @@ module.exports = function (app) {
       });
   });
 
+  // Route to add a new goal to a user. 
+  app.post("/api/new_goal", (req, res) => {
+    console.log(req.user.id, req.body.goalName, parseInt(req.body.goalNumber), req.body.doBy);
+    db.Goal.create({
+      goalName: req.body.goalName,
+      goalNumber: parseInt(req.body.goalNumber),
+      doBy: new Date(req.body.doBy),
+      UserId: req.user.id,
+    })
+      .then(() => {
+        res.json({ id: req.user.id });
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
+  //Route to add a new milestone for a goal.
+  app.post("/api/new_milestone", (req, res) => {
+    db.Milestone.create({
+      GoalId: 1,
+      numberDone: req.body.MilestoneNumber,
+      doneBy: req.body.MilestoneDoneBy
+    })
+      .then(() => {
+        res.json({ id: req.user.id });
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+  });
+
   //Route to view all goals for a user.
   app.get("/api/all_goals", (req, res) => {
     db.User.findAll({
@@ -62,38 +94,6 @@ module.exports = function (app) {
     });
   });
 
-  // Route to add a new goal to a user. 
-  app.post("/api/new_goal", (req, res) => {
-    console.log(req.user.id, req.body.goalName, parseInt(req.body.goalNumber), req.body.doBy);
-    db.Goal.create({
-      goalName: req.body.goalName,
-      goalNumber: parseInt(req.body.goalNumber),
-      doBy: new Date(req.body.doBy),
-      UserId: req.user.id,
-    })
-      .then(() => {
-        res.json({ id: req.user.id });
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-  });
-
-  //Route to add a new milestone for a goal.
-  app.post("/api/new_milestone", (req, res) => {
-    db.Milestone.create({
-      GoalId: 1,
-      numberDone: req.body.MilestoneName,
-      doneBy: req.body.MilestoneDoneBy
-    })
-      .then(() => {
-        res.json({ id: req.user.id });
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-  });
-
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
@@ -115,6 +115,15 @@ module.exports = function (app) {
     }
   });
 
+  //Put route for updating goal
+  app.put("/api/update_goal/:id", (req, res) => {
+    db.Goal.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
+
 //PUT route for updating milestone
   app.put("/api/update_milestone/:id", (req, res) => {
     db.Milestone.update(req.body, {
@@ -129,6 +138,24 @@ module.exports = function (app) {
     db.User.destroy({
       where: {
         id: req.user.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
+
+  //Route to delete a goal
+  app.delete("/api/Goal_Delete/:id", (req, res) => {
+    db.Goal.destroy({
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
+
+  //Route to delete a milestone
+  app.delete("/api/Milestone_Delete/:id", (req, res) => {
+    db.Milestone.destroy({
+      where: {
+        id: req.params.id,
       },
     }).then((dbTracker) => res.json(dbTracker));
   });
