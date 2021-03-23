@@ -30,6 +30,37 @@ module.exports = function (app) {
       });
   });
 
+  //Route to view all goals for a user.
+  app.get("/api/all_goals", (req, res) => {
+    db.User.findAll({
+      where: {
+        id: req.user.id
+      },
+      include: [db.Goal]
+    })
+    .then((response) => {
+      res.send({response});
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
+
+  //Route to view all milestones for a given goal.
+  app.get("/api/all_milestones/:goalId", (req, res) => {
+    db.Milestone.findAll({
+      where: {
+        GoalId: parseInt(req.params.goalId)
+      }
+    })
+    .then((response) => {
+      res.send({response});
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+  });
+
   // Route to add a new goal to a user. 
   app.post("/api/new_goal", (req, res) => {
     console.log(req.user.id, req.body.goalName, parseInt(req.body.goalNumber), req.body.doBy);
@@ -47,11 +78,12 @@ module.exports = function (app) {
       });
   });
 
+  //Route to add a new milestone for a goal.
   app.post("/api/new_milestone", (req, res) => {
     db.Milestone.create({
-      goalId: req.body.goalId,
-      numberDone: req.body.numberDone,
-      doneBy: req.body.doneBy
+      GoalId: 1,
+      numberDone: req.body.MilestoneName,
+      doneBy: req.body.MilestoneDoneBy
     })
       .then(() => {
         res.json({ id: req.user.id });
@@ -92,5 +124,23 @@ module.exports = function (app) {
       email: req.email,
       nickname: req.nickname,
     });
+  });
+
+//PUT route for updating milestone
+  app.put("/api/update_milestone/:id", (req, res) => {
+    db.Milestone.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
+
+  // DELETE route for deleting User
+  app.delete("/api/User_Delete", (req, res) => {
+    db.User.destroy({
+      where: {
+        id: req.user.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
   });
 };
