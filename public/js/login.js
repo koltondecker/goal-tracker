@@ -32,7 +32,7 @@ $(document).ready(() => {
       password: password
     })
       .then(() => {
-        window.location.replace("/homepage");
+        window.location.replace("/dashboard");
         // If there's an error, log the error
       })
       .catch(err => {

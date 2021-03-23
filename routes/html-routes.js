@@ -33,4 +33,8 @@ module.exports = function(app) {
     // res.sendFile(path.join(__dirname, "../public/homepage.html"));
     res.render("homepage");
   });
+
+  app.get("/dashboard", isAuthenticated, (req, res) => {
+    res.render("dashboard");
+  });
 };

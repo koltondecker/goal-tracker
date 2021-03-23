@@ -1,0 +1,45 @@
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="/index" class="brand-logo">Goal Tracker</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/dashboard">My Dashboard</a></li>
+                <li><a href="/login">Sign Out</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="sidenav">
+                <li><a href="/dashboard">My Dashboard</a></li>
+                <li><a href="/login">Sign Out</a></li>
+            </ul>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-4">
+            <h1>Welcome, {{email}}!!</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="smol-head">
+                    <h2>My Goals</h2>
+                </div>
+            </div>
+            <div class="row"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="smol-head">
+                    <h2>Add a Goal</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./js/members.js"></script>
+<script type="text/javascript" src="./js/goals.js"></script>
+<script type="text/javascript" src="./js/milestones.js"></script>
