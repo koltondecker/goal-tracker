@@ -15,6 +15,9 @@ $(document).ready(() => {
             };
 
             insertGoal(newGoalData.goalName, newGoalData.goalNumber, newGoalData.doBy);
+            newGoalNameEl.value="";
+            newGoalNumberEl.value="";
+            newGoalDoByEl.value="";
         });
         
         const insertGoal = (goalName, goalNumber, doBy) => {
@@ -23,9 +26,12 @@ $(document).ready(() => {
             goalNumber: goalNumber,
             doBy: doBy
             })
-            .then(console.log("success"))
+            .then(() => {
+                console.log("success");
+                window.location.replace("/dashboard");
+            })
             .catch((err) => console.error(err));
         };
+
     }
-    
 });

@@ -3,6 +3,7 @@
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
@@ -35,6 +36,14 @@ module.exports = function(app) {
   });
 
   app.get("/dashboard", isAuthenticated, (req, res) => {
-    res.render("dashboard", {"firstName": req.user.firstName, "lastName": req.user.lastName});
+    db.Goal.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    })
+    .then((response) => {
+      const goalsData = JSON.parse(JSON.stringify(response));
+      res.render("dashboard", {"firstName": req.user.firstName, "lastName": req.user.lastName, "goals": goalsData});
+    });
   });
 };

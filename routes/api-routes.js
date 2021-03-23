@@ -8,7 +8,6 @@ module.exports = function (app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    console.log(req.user.email);
     res.json({
       email: req.user.email,
       id: req.user.id,
@@ -68,14 +67,13 @@ module.exports = function (app) {
 
   //Route to view all goals for a user.
   app.get("/api/all_goals", (req, res) => {
-    db.User.findAll({
+    db.Goal.findAll({
       where: {
-        id: req.user.id
-      },
-      include: [db.Goal]
+        UserId: req.user.id
+      }
     })
     .then((response) => {
-      res.json({response});
+      res.json(response);
     })
     .catch(err => {
       res.status(401).json(err);

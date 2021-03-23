@@ -13,38 +13,52 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-    <div class="row">
-        <div class="container">
-        <div class="col-md-12 col-md-offset-4">
-            <h4>Welcome, {{firstName}} {{lastName}}!</h4>
-        </div>
-        </div>
-    </div>
-    <div class="row">
+<div class="row">
     <div class="container">
-      <div class="col l4 s12">
-      <h5>Set a new goal</h5>
-        <form class="col l12 s12">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">Goal Name</label>
-              <button class="btn waves-effect waves-light green" type="submit" name="action">Add goal
-                <i class="material-icons right">add</i>
-              </button>
-            </div>
-        </form>
+      <div class="col-md-12 col-md-offset-4">
+          <h4>Welcome, {{firstName}} {{lastName}}!</h4>
       </div>
     </div>
-    <div class="container">
-      <div class="col l8 s12">
+</div>
+<div class="row">
+  <div class="container">
+    <div class="col l4 s12">
+    <h5>Set a new goal</h5>
+      <form class="col l12 s12">
+        <div class="input-field col s12">
+          <input id="newGoalName" type="text">
+          <label for="newGoalName">Goal Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="newGoalNumber" type="number">
+          <label for="newGoalNumber">Goal Number</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="newGoalDoBy" type="date">
+          <label for="newGoalDoBy">Goal Do By Date</label>
+        </div>
+        <button id="newGoalSubmitBtn" class="btn waves-effect waves-light green" type="submit" name="action">Add goal
+            <i class="material-icons right">add</i>
+          </button>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div class="col l8 s12">
       <h5>My Current Goals</h5>  
       <ul class="collapsible popout">
-        
+        {{#each goals}}
+          <li class="goal-item">
+            {{goalName}} 
+            {{goalNumber}} 
+            {{doBy}} 
+            <button class="goal-button">Goal Button</button>
+          </li>
+        {{/each}}
       </ul>
-      </div>
-    </div> 
-    </div>  
-
+    </div>
+  </div> 
+</div>  
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./js/members.js"></script>
