@@ -1,37 +1,73 @@
 $(document).ready(() => {
-    // const addMilestoneBtn = document.getElementById("addMilestoneBtn");
 
-    // function addMilestoneElement() {
-    //     //TODO: Add code here to create a new milestone input line each time the button is pressed to add a milestone!
-    //     console.log("you added a new milestone element to the page!");
-    // }
-
-    // addMilestoneBtn.addEventListener("click", () => {
-    //     addMilestoneElement();
-    // });
-
-    const newMilestoneNameEl = document.getElementById("newMilestoneName");
+    const newMilestoneNumberEl = document.getElementById("newMilestoneName");
     const newMilestoneDoneByEl = document.getElementById("newMilestoneDoneBy");
     const newMilestoneSubmitBtn = document.getElementById("newMilestoneSubmitBtn");
+    // const progressBarDataArray = [50];
 
     newMilestoneSubmitBtn.addEventListener("click", (e) => {
         e.preventDefault();
 
         const newMilestoneData = {
-            MilestoneName: newMilestoneNameEl.value.trim(),
+            MilestoneName: newMilestoneNumberEl.value.trim(),
             MilestoneDoneBy: newMilestoneDoneByEl.value.trim(),
         };
 
-        insertMilestone(newMilestoneData.MilestoneName, newMilestoneData.MilestoneDoneBy);
+        insertMilestone(newMilestoneData.MilestoneNumber, newMilestoneData.MilestoneDoneBy);
     });
     
     const insertMilestone = (MilestoneName, MilestoneDoneBy) => {
         $.post("/api/new_Milestone", {
-            MilestoneName: MilestoneName,
+            MilestoneNumber: MilestoneNumber,
             MilestoneDoneBy: MilestoneDoneBy,
         })
-            .then(console.log("success"))
+            .then((response) => {
+                console.log("success");
+                console.log(response);
+            })
             .catch((err) => console.error(err));
     };
+
+    // const options = {
+    //     chart: {
+    //       height: 280,
+    //       type: "radialBar"
+    //     },
+        
+    //     series: progressBarDataArray,
+        
+    //     plotOptions: {
+    //       radialBar: {
+    //         hollow: {
+    //           margin: 15,
+    //           size: "70%"
+    //         },
+           
+    //         dataLabels: {
+    //           showOn: "always",
+    //           name: {
+    //             offsetY: -10,
+    //             show: true,
+    //             color: "#888",
+    //             fontSize: "13px"
+    //           },
+    //           value: {
+    //             color: "#111",
+    //             fontSize: "30px",
+    //             show: true
+    //           }
+    //         }
+    //       }
+    //     },
+      
+    //     stroke: {
+    //       lineCap: "round",
+    //     },
+    //     labels: ["Progress"]
+    //   };
+      
+    //   const chart = new ApexCharts(document.querySelector("#chart"), options);
+      
+    //   chart.render();
 
 });
