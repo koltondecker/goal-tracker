@@ -13,31 +13,38 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-
-<div class="container">
     <div class="row">
+        <div class="container">
         <div class="col-md-12 col-md-offset-4">
-            <h1>Welcome, {{firstName}} {{lastName}}!!</h1>
+            <h4>Welcome, {{firstName}} {{lastName}}!</h4>
+        </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="row">
-                <div class="smol-head">
-                    <h2>My Goals</h2>
-                </div>
+    <div class="container">
+      <div class="col l4 s12">
+      <h5>Set a new goal</h5>
+        <form class="col l12 s12">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1">Goal Name</label>
+              <button class="btn waves-effect waves-light green" type="submit" name="action">Add goal
+                <i class="material-icons right">add</i>
+              </button>
             </div>
-            <div class="row"></div>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
-                <div class="smol-head">
-                    <h2>Add a Goal</h2>
-                </div>
-            </div>
-        </div>
+        </form>
+      </div>
     </div>
-</div>
+    <div class="container">
+      <div class="col l8 s12">
+      <h5>My Current Goals</h5>  
+      <ul class="collapsible popout">
+        
+      </ul>
+      </div>
+    </div> 
+    </div>  
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="./js/members.js"></script>
