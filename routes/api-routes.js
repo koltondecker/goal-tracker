@@ -81,4 +81,22 @@ module.exports = function(app) {
       });
     }
   });
+
+  // DELETE route for deleting User
+  app.delete("/api/User/:id", (req, res) => {
+    db.User.destroy({
+      where: {
+        id: req.params.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
+
+  //PUT route for updating milestone
+  app.put("/api/update_milestone/:id", (req, res) => {
+    db.Milestone.update(req.body, {
+      where: {
+        id: req.body.id,
+      },
+    }).then((dbTracker) => res.json(dbTracker));
+  });
 };

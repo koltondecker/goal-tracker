@@ -4,14 +4,14 @@ CREATE DATABASE progress_tracker;
 
 USE progress_tracker;
 
-CREATE TABLE users(
+CREATE TABLE User(
   id INTEGER NOT NULL AUTO_INCREMENT,
   email VARCHAR(50) NOT NULL,
   password VARCHAR(200) NOT NULL,
   PRIMARY KEY (id)
 );
 
-CREATE TABLE goals(
+CREATE TABLE Goal(
   id INTEGER NOT NULL AUTO_INCREMENT,
   -- userId INTEGER NOT NULL,
   goalName VARCHAR(200) NOT NULL,
@@ -21,9 +21,9 @@ CREATE TABLE goals(
   FOREIGN KEY (userid) REFERENCES users (id)
 );
 
-CREATE TABLE milestones(
+CREATE TABLE Milestone(
   id INTEGER NOT NULL AUTO_INCREMENT,
-  goalId INTEGER NOT NULL,
+  -- goalId INTEGER NOT NULL,
   numberDone INT NOT NULL,
   doneBy DATE NOT NULL,
   PRIMARY KEY (id),
@@ -60,8 +60,8 @@ VALUES ('1', 50, '2021-3-27');
 INSERT INTO milestones (goalId, numberDone, doneBy)
 VALUES ('1', 50, '2021-4-01');
 
-SELECT * FROM users
-LEFT JOIN goals ON userId = users.id
+SELECT * FROM User
+LEFT JOIN Goal ON userId = Goal.id
 LEFT JOIN milestones ON goalId = goals.id;
 
 SELECT users.id, userId, email, goalName, goalNumber, sum(numberDone) AS completed, goalNumber-sum(numberDone) AS remaining
