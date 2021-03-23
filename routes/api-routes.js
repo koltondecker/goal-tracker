@@ -75,7 +75,7 @@ module.exports = function (app) {
       include: [db.Goal]
     })
     .then((response) => {
-      res.send({response});
+      res.json({response});
     })
     .catch(err => {
       res.status(401).json(err);
@@ -90,7 +90,7 @@ module.exports = function (app) {
       }
     })
     .then((response) => {
-      res.send({response});
+      res.json({response});
     })
     .catch(err => {
       res.status(401).json(err);

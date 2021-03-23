@@ -5,28 +5,31 @@ $(document).ready(() => {
     const newMilestoneSubmitBtn = document.getElementById("newMilestoneSubmitBtn");
     // const progressBarDataArray = [50];
 
-    newMilestoneSubmitBtn.addEventListener("click", (e) => {
-        e.preventDefault();
+    if(newMilestoneSubmitBtn) {
+        newMilestoneSubmitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
 
-        const newMilestoneData = {
-            MilestoneName: newMilestoneNumberEl.value.trim(),
-            MilestoneDoneBy: newMilestoneDoneByEl.value.trim(),
-        };
+            const newMilestoneData = {
+                MilestoneName: newMilestoneNumberEl.value.trim(),
+                MilestoneDoneBy: newMilestoneDoneByEl.value.trim(),
+            };
 
-        insertMilestone(newMilestoneData.MilestoneNumber, newMilestoneData.MilestoneDoneBy);
-    });
-    
-    const insertMilestone = (MilestoneName, MilestoneDoneBy) => {
-        $.post("/api/new_Milestone", {
-            MilestoneNumber: MilestoneNumber,
-            MilestoneDoneBy: MilestoneDoneBy,
-        })
-            .then((response) => {
-                console.log("success");
-                console.log(response);
+            insertMilestone(newMilestoneData.MilestoneNumber, newMilestoneData.MilestoneDoneBy);
+        });
+        
+        const insertMilestone = (MilestoneName, MilestoneDoneBy) => {
+            $.post("/api/new_Milestone", {
+                MilestoneNumber: MilestoneNumber,
+                MilestoneDoneBy: MilestoneDoneBy,
             })
-            .catch((err) => console.error(err));
-    };
+                .then((response) => {
+                    console.log("success");
+                    console.log(response);
+                })
+                .catch((err) => console.error(err));
+        };
+    }
+    
 
     // const options = {
     //     chart: {
