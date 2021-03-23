@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the homepage page.
   // Otherwise the user will be sent an error
@@ -39,12 +39,12 @@ module.exports = function(app) {
       doBy: new Date(req.body.doBy),
       UserId: req.user.id,
     })
-    .then(() => {
-      res.json({ id: req.user.id });
-    })
-    .catch(err => {
-      res.status(401).json(err);
-    });
+      .then(() => {
+        res.json({ id: req.user.id });
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   //Route to add a new milestone for a goal.
@@ -54,12 +54,12 @@ module.exports = function(app) {
       numberDone: req.body.MilestoneNumber,
       doneBy: req.body.MilestoneDoneBy
     })
-    .then(() => {
-      res.json({ id: req.user.id });
-    })
-    .catch(err => {
-      res.status(401).json(err);
-    });
+      .then(() => {
+        res.json({ id: req.user.id });
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
     //Route to view all goals for a user.
@@ -112,6 +112,18 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  }).then(() => {
+    db.Users.findOne({
+      where: {
+        id: req.params.id
+      }
+    });
+  }).then(() => {
+    res.render("dashboard", {
+      user: req.User,
+      email: req.email,
+      nickname: req.nickname,
+    });
   });
 
 //Put route for updating goal
