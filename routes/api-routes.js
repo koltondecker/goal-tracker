@@ -8,9 +8,23 @@ module.exports = function (app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user.id
+    // res.json({
+    //   email: req.user.email,
+    //   id: req.user.id
+    // });
+    db.User.findOne({
+      where: {
+        id: req.user.id
+      }
+    })
+    .then(() => {
+      console.log(req.user.email);
+      res.render("dashboard", {
+        // user: req.User,
+        email: req.user.email,
+        // nickname: req.nickname,
+      });
+
     });
   });
 
@@ -38,12 +52,12 @@ module.exports = function (app) {
       },
       include: [db.Goal]
     })
-    .then((response) => {
-      res.send({response});
-    })
-    .catch(err => {
-      res.status(401).json(err);
-    });
+      .then((response) => {
+        res.send({ response });
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   //Route to view all milestones for a given goal.
@@ -53,12 +67,12 @@ module.exports = function (app) {
         GoalId: parseInt(req.params.goalId)
       }
     })
-    .then((response) => {
-      res.send({response});
-    })
-    .catch(err => {
-      res.status(401).json(err);
-    });
+      .then((response) => {
+        res.send({ response });
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
   });
 
   // Route to add a new goal to a user. 
@@ -112,21 +126,9 @@ module.exports = function (app) {
         id: req.user.id
       });
     }
-  }).then(() => {
-    db.Users.findOne({
-      where: {
-        id: req.params.id
-      }
-    });
-  }).then(() => {
-    res.render("dashboard", {
-      user: req.User,
-      email: req.email,
-      nickname: req.nickname,
-    });
   });
 
-//PUT route for updating milestone
+  //PUT route for updating milestone
   app.put("/api/update_milestone/:id", (req, res) => {
     db.Milestone.update(req.body, {
       where: {
