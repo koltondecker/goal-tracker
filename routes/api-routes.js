@@ -115,28 +115,18 @@ module.exports = function (app) {
     }
   });
 
-<<<<<<< HEAD
   // DELETE route for deleting User
   app.delete("/api/User/:id", (req, res) => {
     db.User.destroy({
-=======
   //Put route for updating goal
   app.put("/api/update_goal/:id", (req, res) => {
     db.Goal.update(req.body, {
->>>>>>> 8c6a4274c7581fb7944b7206441e08ea4d138eab
       where: {
         id: req.params.id,
       },
     }).then((dbTracker) => res.json(dbTracker));
   });
 
-<<<<<<< HEAD
-  //PUT route for updating milestone
-  app.put("/api/update_milestone/:id", (req, res) => {
-    db.Milestone.update(req.body, {
-      where: {
-        id: req.body.id,
-=======
 //PUT route for updating milestone
   app.put("/api/update_milestone/:id", (req, res) => {
     db.Milestone.update(req.body, {
@@ -169,7 +159,6 @@ module.exports = function (app) {
     db.Milestone.destroy({
       where: {
         id: req.params.id,
->>>>>>> 8c6a4274c7581fb7944b7206441e08ea4d138eab
       },
     }).then((dbTracker) => res.json(dbTracker));
   });
