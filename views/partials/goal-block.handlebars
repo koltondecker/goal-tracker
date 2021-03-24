@@ -11,11 +11,11 @@
                                 <label for="newMilestoneQuantity" class="form-label">Milestone Quantity</label>
                                 <input type="text" class="form-control" id="newMilestoneQuantity">
                             </div>
-                            <div class="mb-3">
+                            <div>
                                 <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
                                 <input type="date" class="form-control" id="newMilestoneDoneBy">
                             </div>
-                            <button id="newMilestoneSubmitBtn" type="submit" class="btn btn-primary" data-goalId="{{id}}">Submit
+                            <button id="newMilestoneSubmitBtn" type="submit" class="btn waves-effect waves-light green" data-goalId="{{id}}">Submit
                                 New Milestone</button>
                         </form>
                     </div>
@@ -23,5 +23,6 @@
             </div>
         </div>
     </div>
-    <a class="milestone-button waves-effect waves-light btn">Add a Milestone</a>
+    <a class="milestone-button btn waves-light green">Add a Milestone</a>
+    <button type="submit" id="deleteGoalBtn" class=" btn waves-effect waves-light red">Delete Goal</button>   
 </div>
