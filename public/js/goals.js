@@ -95,8 +95,12 @@ $(document).ready(() => {
                 },
                 labels: [goal.goalName]
             };
+
+            // const newDiv = $(`<div id="chart-${goal.id}"><div>`);
+
+            // $("#chartsDiv").append(newDiv);
             
-            const chart = new ApexCharts(document.getElementById("chart"), options);
+            const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
 
             chart.render();
 
