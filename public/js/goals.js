@@ -4,7 +4,9 @@ $(document).ready(() => {
     const newGoalDoByEl = document.getElementById("newGoalDoBy");
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
     // const expandGoalBtn = document.querySelector(".goal-button");
-    const deleteGoalBtn = document.getElementById("deleteGoalBtn");
+    const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
+
+    console.log(deleteGoalBtns);
 
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -113,27 +115,30 @@ $(document).ready(() => {
     //     });
     // }
 
-    if(deleteGoalBtn) {
-        deleteGoalBtn.addEventListener("click", (e) => {
+    if(deleteGoalBtns) {
+        deleteGoalBtns.forEach((deleteBtn) => {
+            deleteBtn.addEventListener("click", (e) => {
 
-            const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
+                console.log("delete button pressed!");
 
-            fetch(`/api/Goal_Delete/${goalId}`, {
-                method: "DELETE",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json",
-                }
-              }).then((response, error) => {
+                fetch(`/api/Goal_Delete/${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`, {
+                    method: "DELETE",
+                    headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    }
+                }).then((response, error) => {
 
-                if (response.ok) {
-                    console.log("goal deleted");
-                    location.reload("/");
-                } else {
-                    console.err(error);
-                }
+                    if (response.ok) {
+                        console.log("goal deleted");
+                        location.reload("/");
+                    } else {
+                        console.err(error);
+                    }
+                });
             });
         });
+        
     }
 
 });
