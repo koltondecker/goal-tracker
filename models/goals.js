@@ -37,9 +37,9 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 isDate: true
             },
-            get() {
-                return moment(this.getDataValue("doBy")).format("MMMM Do, YYYY");
-            }
+            // get() {
+            //     return moment(this.getDataValue("doBy")).format("MMMM Do, YYYY");
+            // }
         }
     });
     // Associating goals with milestones table

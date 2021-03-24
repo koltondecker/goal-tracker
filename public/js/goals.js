@@ -61,12 +61,13 @@ $(document).ready(() => {
                 // const daysRemaining = () => {
                     const oneDay= 24 * 60 * 60 * 1000;
                     const today = new Date();
-                    console.log(goal.doBy);
+                    // console.log(goal.doBy);
                     const tomorrow = new Date("March 30, 2021");
                     console.log(tomorrow);
 
                     const daysTilDeadline = Math.round(Math.abs((today-tomorrow)/oneDay));
-                    console.log(daysTilDeadline)
+                    console.log(daysTilDeadline);
+                    
                     
 
                 const options = {
