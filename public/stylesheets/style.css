@@ -76,8 +76,8 @@ p {
   padding-top: 75px; /* Location of the box */
   left: 0;
   top: 10%;
-  width: 20%;
-  height: 35%;
+  width: 40%;
+  height: 40%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /*Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
