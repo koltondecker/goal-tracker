@@ -50,7 +50,15 @@ p {
     margin: auto;
     padding: 20px;
     /* border: 1px solid #888; */
-    width: 75%;
+    width: 100%;
+  }
+
+  .modal {
+    width: 100% !important;
+    height: 60%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /*Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   }
 }
 
@@ -73,11 +81,21 @@ p {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
+<<<<<<< HEAD
   padding-top: 5vh; /* Location of the box */
   left: 0;
   top: 10vh;
   width: 60vw;
   height: 60vh;
+=======
+  padding-top: 15%; /* Location of the box */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+>>>>>>> b8d7aac7172d3f731278f65593ebfdfd7dcfdb54
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /*Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
@@ -114,4 +132,8 @@ footer.page-footer {
   left: 0;
   bottom: 0;
   width: 100%; */
+}
+
+.buttonsDiv {
+  padding-bottom:10%
 }

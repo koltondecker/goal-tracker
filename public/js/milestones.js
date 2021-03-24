@@ -2,14 +2,14 @@ $(document).ready(() => {
 
     const newMilestoneQuantityEl = document.getElementById("newMilestoneQuantity");
     const newMilestoneDoneByEl = document.getElementById("newMilestoneDoneBy");
-    const newMilestoneSubmitBtn = document.getElementById("newMilestoneSubmitBtn");
-    // const addMilestoneBtn = document.querySelector("milestone-button");
+    const submitMilestoneBtn = document.getElementById("submit-button-div");
 
-    if(newMilestoneSubmitBtn) {
-        newMilestoneSubmitBtn.addEventListener("click", (e) => {
+    if(submitMilestoneBtn) {
+        submitMilestoneBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
             const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
+            console.log(goalId);
 
             const newMilestoneData = {
                 GoalId: parseInt(goalId),
@@ -27,7 +27,6 @@ $(document).ready(() => {
                 GoalId: GoalId,
                 MilestoneQuantity: MilestoneQuantity,
                 MilestoneDoneBy: MilestoneDoneBy,
-                // GoalId: this.goalQuantity
             })
                 .then(() => {
                     console.log("success");
@@ -35,6 +34,7 @@ $(document).ready(() => {
                 })
                 .catch((err) => console.error(err));
         };
+        
     }
 
     // if(addMilestoneBtn) {

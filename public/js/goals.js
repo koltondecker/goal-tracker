@@ -6,8 +6,6 @@ $(document).ready(() => {
     // const expandGoalBtn = document.querySelector(".goal-button");
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
 
-    console.log(deleteGoalBtns);
-
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -43,72 +41,81 @@ $(document).ready(() => {
 
     }
 
-    $.get("api/all_goals", 
-        console.log("Getting all goals")
-    )
+    $.get("api/all_goals")
     .then((goalsData) => {
         
         goalsData.forEach((goal) => {
 
-            const options = {
-                chart: {
-                height: 280,
-                type: "radialBar",
-                },
+            $.get(`api/sum_all_milestones/${goal.id}`)
+            .then((milestonesData) => {
+
+                const calculatePercentageCompleted = () => {
+
+                    const totalCompleted = parseInt(milestonesData[0].total_completed);
+                    const overallGoal = parseInt(goal.goalNumber);
+                    const percentComplete = Math.floor((totalCompleted / overallGoal) * 100);
+
+                    return (percentComplete ? percentComplete : 0);
+                };
                 
-                // series: [milestone.numberDone / goal.goalNumber]
-                series: [goal.goalNumber],
-                colors: ["#20E647"],
-                plotOptions: {
-                radialBar: {
-                    hollow: {
-                    margin: 0,
-                    size: "70%",
-                    background: "#293450"
-                    },
-                    track: {
-                    dropShadow: {
-                        enabled: true,
-                        top: 2,
-                        left: 0,
-                        blur: 4,
-                        opacity: 0.15
-                    }
-                    },
-                    dataLabels: {
-                    name: {
-                        offsetY: -10,
-                        color: "#fff",
-                        fontSize: "13px"
-                    },
-                    value: {
-                        color: "#fff",
-                        fontSize: "30px",
-                        show: true
-                    }
-                    }
-                }
-                },
-                fill: {
-                type: "gradient",
-                gradient: {
-                    shade: "dark",
-                    type: "vertical",
-                    gradientToColors: ["#87D4F9"],
-                    stops: [0, 100]
-                }
-                },
-                stroke: {
-                lineCap: "round"
-                },
-                // labels: [goal.goalName]
-                labels: ["Progress"]
-            };
-            
-            const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
 
-            chart.render();
-
+                const options = {
+                    chart: {
+                    height: 280,
+                    type: "radialBar",
+                    },
+                    
+                    series: [calculatePercentageCompleted()],
+                    colors: ["#20E647"],
+                    plotOptions: {
+                    radialBar: {
+                        hollow: {
+                        margin: 0,
+                        size: "70%",
+                        background: "#293450"
+                        },
+                        track: {
+                        dropShadow: {
+                            enabled: true,
+                            top: 2,
+                            left: 0,
+                            blur: 4,
+                            opacity: 0.15
+                        }
+                        },
+                        dataLabels: {
+                        name: {
+                            offsetY: -10,
+                            color: "#fff",
+                            fontSize: "13px"
+                        },
+                        value: {
+                            color: "#fff",
+                            fontSize: "30px",
+                            show: true
+                        }
+                        }
+                    }
+                    },
+                    fill: {
+                    type: "gradient",
+                    gradient: {
+                        shade: "dark",
+                        type: "vertical",
+                        gradientToColors: ["#87D4F9"],
+                        stops: [0, 100]
+                    }
+                    },
+                    stroke: {
+                    lineCap: "round"
+                    },
+                    labels: ["Progress"]
+                };
+                
+                const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
+    
+                chart.render();
+            });
         });
     });
 
@@ -123,8 +130,6 @@ $(document).ready(() => {
     if(deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
             deleteBtn.addEventListener("click", (e) => {
-
-                console.log("delete button pressed!");
 
                 fetch(`/api/Goal_Delete/${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`, {
                     method: "DELETE",

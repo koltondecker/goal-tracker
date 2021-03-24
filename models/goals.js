@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 module.exports = function (sequelize, DataTypes) {
     //define goals model (table)
     const Goal = sequelize.define("Goal", {
@@ -30,10 +32,13 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         doBy: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.DATE,
             allowNull: false,
             validate: {
                 isDate: true
+            },
+            get() {
+                return moment(this.getDataValue("doBy")).format("MMMM Do, YYYY");
             }
         }
     });

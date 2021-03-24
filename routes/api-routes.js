@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const { sequelize } = require("../models");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -91,6 +92,21 @@ module.exports = function (app) {
     })
     .catch(err => {
       res.status(401).json(err);
+    });
+  });
+
+  //Route for getting sum of milestones for a specific goal
+  app.get("/api/sum_all_milestones/:goalId", (req, res) => {
+    db.Milestone.findAll({
+      where: {
+        GoalId: parseInt(req.params.goalId)
+      },
+      attributes: [
+        [sequelize.fn("sum", sequelize.col("numberDone")), "total_completed"]
+      ]
+    })
+    .then((response) => {
+      res.json(response);
     });
   });
 
