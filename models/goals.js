@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
                 isDate: true
             },
             get() {
-                return moment(this.getDataValue("doBy")).format("MMMM Do YYYY");
+                return moment(this.getDataValue("doBy")).format("MMMM Do, YYYY");
             }
         }
     });
