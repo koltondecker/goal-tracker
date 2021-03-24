@@ -35,7 +35,8 @@ module.exports = function(app) {
     db.Goal.findAll({
       where: {
         UserId: req.user.id
-      }
+      },
+      include: [db.Milestone]
     })
     .then((response) => {
       const goalsData = JSON.parse(JSON.stringify(response));
