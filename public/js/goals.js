@@ -58,14 +58,16 @@ $(document).ready(() => {
                     return (percentComplete ? percentComplete : 0);
                 };
                 
-                const daysRemaining = () => {
-                    const oneDay= 24 * 60 * 60 * 1000; //hours*minutes*seconds*millisenconds
+                // const daysRemaining = () => {
+                    const oneDay= 24 * 60 * 60 * 1000;
                     const today = new Date();
-                    const deadline = new Date(goal.doBy);
-                    const daysTilDeadline = Math.round(Math.abs((today-deadline)/oneDay));
+                    console.log(goal.doBy);
+                    const tomorrow = new Date("March 30, 2021");
+                    console.log(tomorrow);
 
-                    return daysTilDeadline;
-                };
+                    const daysTilDeadline = Math.round(Math.abs((today-tomorrow)/oneDay));
+                    console.log(daysTilDeadline)
+                    
 
                 const options = {
                     chart: {
