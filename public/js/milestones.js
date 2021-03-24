@@ -1,8 +1,9 @@
 $(document).ready(() => {
 
-    const newMilestoneNumberEl = document.getElementById("newMilestoneName");
+    // const newMilestoneNumberEl = document.getElementById("newMilestoneName");
     const newMilestoneDoneByEl = document.getElementById("newMilestoneDoneBy");
     const newMilestoneSubmitBtn = document.getElementById("newMilestoneSubmitBtn");
+    // const addMilestoneBtn = document.querySelector("milestone-button");
     // const progressBarDataArray = [50];
 
     if(newMilestoneSubmitBtn) {
@@ -10,17 +11,18 @@ $(document).ready(() => {
             e.preventDefault();
 
             const newMilestoneData = {
-                MilestoneName: newMilestoneNumberEl.value.trim(),
+                // MilestoneName: newMilestoneNumberEl.value.trim(),
                 MilestoneDoneBy: newMilestoneDoneByEl.value.trim(),
             };
 
             insertMilestone(newMilestoneData.MilestoneNumber, newMilestoneData.MilestoneDoneBy);
         });
         
-        const insertMilestone = (MilestoneName, MilestoneDoneBy) => {
+        const insertMilestone = (MilestoneNumber, MilestoneDoneBy) => {
             $.post("/api/new_Milestone", {
                 MilestoneNumber: MilestoneNumber,
                 MilestoneDoneBy: MilestoneDoneBy,
+                // GoalId: this.goalNumber
             })
                 .then((response) => {
                     console.log("success");
@@ -29,6 +31,14 @@ $(document).ready(() => {
                 .catch((err) => console.error(err));
         };
     }
+
+    // if(addMilestoneBtn) {
+    //     addMilestoneBtn.addEventListener("click", (e) => {
+    //         e.preventDefault();
+
+
+    //     });
+    // }
     
 
     // const options = {
