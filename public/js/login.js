@@ -25,7 +25,7 @@ $(document).ready(() => {
 
 //test
 
-  // loginUser does a post to our "api/login" route and if successful, redirects us the the homepage page
+  // loginUser does a post to our "api/login" route and if successful, redirects us the the dashboard page
   function loginUser(email, password) {
     $.post("/api/login", {
       email: email,

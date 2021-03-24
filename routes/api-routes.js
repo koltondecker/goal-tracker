@@ -4,7 +4,7 @@ const passport = require("../config/passport");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the homepage page.
+  // If the user has valid login credentials, send them to the dashboard page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
@@ -53,7 +53,7 @@ module.exports = function (app) {
   //Route to add a new milestone for a goal.
   app.post("/api/new_milestone", (req, res) => {
     db.Milestone.create({
-      GoalId: 1,
+      GoalId: req.Goal.id,
       numberDone: req.body.MilestoneNumber,
       doneBy: req.body.MilestoneDoneBy
     })

@@ -48,7 +48,8 @@ $(document).ready(() => {
                 height: 280,
                 type: "radialBar",
                 },
-            
+                
+                // series: [milestone.numberDone / goal.goalNumber]
                 series: [goal.goalNumber],
                 colors: ["#20E647"],
                 plotOptions: {

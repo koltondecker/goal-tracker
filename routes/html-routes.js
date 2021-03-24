@@ -7,18 +7,18 @@ const db = require("../models");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the homepage page
+    // If the user already has an account send them to the dashboard page
     // if (req.user) {
-    //   res.redirect("/homepage");
+    //   res.redirect("/dashboard");
     // }
     // res.sendFile(path.join(__dirname, "../public/index.html"));
     res.render("index", {});
   });
 
   app.get("/login", (req, res) => {
-    // If the user already has an account send them to the homepage page
+    // If the user already has an account send them to the dashboard page
     // if (req.user) {
-    //   res.redirect("/homepage");
+    //   res.redirect("/dashboard");
     // }
     // res.sendFile(path.join(__dirname, "../public/login.html"));
     res.render("login");
@@ -30,10 +30,6 @@ module.exports = function(app) {
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/homepage", isAuthenticated, (req, res) => {
-    // res.sendFile(path.join(__dirname, "../public/homepage.html"));
-    res.render("homepage", {"email": req.user.email});
-  });
 
   app.get("/dashboard", isAuthenticated, (req, res) => {
     db.Goal.findAll({
