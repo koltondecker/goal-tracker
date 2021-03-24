@@ -29,9 +29,9 @@ $(document).ready(() => {
                 MilestoneDoneBy: MilestoneDoneBy,
                 // GoalId: this.goalQuantity
             })
-                .then((response) => {
+                .then(() => {
                     console.log("success");
-                    console.log(response);
+                    location.reload();
                 })
                 .catch((err) => console.error(err));
         };

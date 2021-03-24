@@ -4,6 +4,7 @@ $(document).ready(() => {
     const newGoalDoByEl = document.getElementById("newGoalDoBy");
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
     // const expandGoalBtn = document.querySelector(".goal-button");
+    const deleteGoalBtn = document.getElementById("deleteGoalBtn");
 
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -96,10 +97,6 @@ $(document).ready(() => {
                 },
                 labels: [goal.goalName]
             };
-
-            // const newDiv = $(`<div id="chart-${goal.id}"><div>`);
-
-            // $("#chartsDiv").append(newDiv);
             
             const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
 
@@ -115,5 +112,28 @@ $(document).ready(() => {
 
     //     });
     // }
+
+    if(deleteGoalBtn) {
+        deleteGoalBtn.addEventListener("click", (e) => {
+
+            const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
+
+            fetch(`/api/Goal_Delete/${goalId}`, {
+                method: "DELETE",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                }
+              }).then((response, error) => {
+
+                if (response.ok) {
+                    console.log("goal deleted");
+                    location.reload("/");
+                } else {
+                    console.err(error);
+                }
+            });
+        });
+    }
 
 });
