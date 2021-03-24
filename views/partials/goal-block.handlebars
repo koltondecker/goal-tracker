@@ -8,14 +8,14 @@
                     <div id="goal-form">
                         <form>
                             <div class="mb-3">
-                                <label for="newMilestoneNumber" class="form-label">Milestone Number</label>
-                                <input type="text" class="form-control" id="newMilestoneNumber">
+                                <label for="newMilestoneQuantity" class="form-label">Milestone Quantity</label>
+                                <input type="text" class="form-control" id="newMilestoneQuantity">
                             </div>
                             <div class="mb-3">
                                 <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
                                 <input type="date" class="form-control" id="newMilestoneDoneBy">
                             </div>
-                            <button id="newMilestoneSubmitBtn" type="submit" class="btn btn-primary">Submit
+                            <button id="newMilestoneSubmitBtn" type="submit" class="btn btn-primary" data-goalId="{{id}}">Submit
                                 New Milestone</button>
                         </form>
                     </div>

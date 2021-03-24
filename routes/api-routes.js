@@ -35,7 +35,6 @@ module.exports = function (app) {
 
   // Route to add a new goal to a user. 
   app.post("/api/new_goal", (req, res) => {
-    console.log(req.user.id, req.body.goalName, parseInt(req.body.goalNumber), req.body.doBy);
     db.Goal.create({
       goalName: req.body.goalName,
       goalNumber: parseInt(req.body.goalNumber),
@@ -53,9 +52,9 @@ module.exports = function (app) {
   //Route to add a new milestone for a goal.
   app.post("/api/new_milestone", (req, res) => {
     db.Milestone.create({
-      GoalId: req.Goal.id,
-      numberDone: req.body.MilestoneNumber,
-      doneBy: req.body.MilestoneDoneBy
+      numberDone: parseInt(req.body.MilestoneQuantity),
+      doneBy: new Date(req.body.MilestoneDoneBy),
+      GoalId: req.body.GoalId
     })
       .then(() => {
         res.json({ id: req.user.id });
