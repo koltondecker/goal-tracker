@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             unique: true,
             validate: {
-                isNumber: true,
+                isInt: true,
                 notNull: {
                     msg: "Number completed in this goal milestone must be an integer"
                 },
