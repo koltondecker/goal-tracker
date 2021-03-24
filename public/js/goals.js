@@ -3,7 +3,7 @@ $(document).ready(() => {
     const newGoalNumberEl = document.getElementById("newGoalNumber");
     const newGoalDoByEl = document.getElementById("newGoalDoBy");
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
-    const expandGoalBtn = document.querySelector(".goal-button");
+    // const expandGoalBtn = document.querySelector(".goal-button");
 
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -103,12 +103,12 @@ $(document).ready(() => {
         });
     });
 
-    if(expandGoalBtn) {
-        expandGoalBtn.addEventListener("click", (e) => {
-            e.preventDefault();
+    // if(expandGoalBtn) {
+    //     expandGoalBtn.addEventListener("click", (e) => {
+    //         e.preventDefault();
 
 
-        });
-    }
+    //     });
+    // }
 
 });
