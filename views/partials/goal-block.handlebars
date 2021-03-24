@@ -1,28 +1,27 @@
 <div class="card">
-<div id="chart-{{id}}" class="card-content">
-    {{goalName}}
-
-    <button class="milestone-button">Add a Milestone</button>
-    <div id="goalModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="milestones">
-                <div id="goal-form">
-                    <form>
-                        <div class="mb-3">
-                            <label for="newMilestoneNumber" class="form-label">Milestone Number</label>
-                            <input type="text" class="form-control" id="newMilestoneNumber">
-                        </div>
-                        <div class="mb-3">
-                            <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
-                            <input type="date" class="form-control" id="newMilestoneDoneBy">
-                        </div>
-                        <button id="newMilestoneSubmitBtn" type="submit" class="btn btn-primary">Submit
-                            New Milestone</button>
-                    </form>
+    <h3>{{goalName}}</h3>
+    <div id="chart-{{id}}" class="card-content">
+        <div id="goalModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="milestones">
+                    <div id="goal-form">
+                        <form>
+                            <div class="mb-3">
+                                <label for="newMilestoneNumber" class="form-label">Milestone Number</label>
+                                <input type="text" class="form-control" id="newMilestoneNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
+                                <input type="date" class="form-control" id="newMilestoneDoneBy">
+                            </div>
+                            <button id="newMilestoneSubmitBtn" type="submit" class="btn btn-primary">Submit
+                                New Milestone</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <a class="milestone-button waves-effect waves-light btn">Add a Milestone</a>
 </div>

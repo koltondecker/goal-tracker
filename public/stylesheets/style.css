@@ -47,6 +47,14 @@ p {
   }
 }
 
+.card {
+  text-align: center;
+}
+
+.milestone-button {
+  margin: 15px;
+}
+
 .icon-block {
   padding: 0 15px;
 }
