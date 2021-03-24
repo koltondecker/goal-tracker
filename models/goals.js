@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         doBy: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
             validate: {
                 isDate: true
