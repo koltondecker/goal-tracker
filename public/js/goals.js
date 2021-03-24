@@ -12,11 +12,15 @@ $(document).ready(() => {
         newGoalSubmitBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
+            console.log("hello world");
+
+
             const newGoalData = {
                 goalName: newGoalNameEl.value.trim(),
                 goalNumber: newGoalNumberEl.value.trim(),
                 doBy: newGoalDoByEl.value.trim()
             };
+
 
             insertGoal(newGoalData.goalName, newGoalData.goalNumber, newGoalData.doBy);
             newGoalNameEl.value="";
@@ -97,7 +101,8 @@ $(document).ready(() => {
                 stroke: {
                 lineCap: "round"
                 },
-                labels: [goal.goalName]
+                // labels: [goal.goalName]
+                labels: ["Progress"]
             };
             
             const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
