@@ -40,8 +40,8 @@ $(document).ready(() => {
     )
     .then((goalsData) => {
         
-        goalsData.forEach(goal => () => {
-            console.log(goal);
+        goalsData.forEach((goal) => {
+
             const options = {
                 chart: {
                 height: 280,
@@ -95,9 +95,10 @@ $(document).ready(() => {
                 labels: [goal.goalName]
             };
             
-            const chart = new ApexCharts(document.querySelector("#chart"), options);
-            
+            const chart = new ApexCharts(document.getElementById("chart"), options);
+
             chart.render();
+
         });
     });
 
