@@ -58,6 +58,14 @@ $(document).ready(() => {
                     return (percentComplete ? percentComplete : 0);
                 };
                 
+                const daysRemaining = () => {
+                    const oneDay= 24 * 60 * 60 * 1000; //hours*minutes*seconds*millisenconds
+                    const today = new Date();
+                    const deadline = new Date(goal.doBy);
+                    const daysTilDeadline = Math.round(Math.abs((today-deadline)/oneDay));
+
+                    return daysTilDeadline;
+                };
 
                 const options = {
                     chart: {
