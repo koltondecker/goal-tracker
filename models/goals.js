@@ -40,9 +40,6 @@ module.exports = function (sequelize, DataTypes) {
                     msg: "You must include a date"
                 }
             },
-            get() {
-                return moment(this.getDataValue("doBy")).format("MMMM Do, YYYY");
-            }
         }
     });
     // Associating goals with milestones table

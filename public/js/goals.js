@@ -70,6 +70,25 @@ $(document).ready(() => {
 
                 };
                 
+                // const daysRemaining = () => {
+                    const oneDay= 24 * 60 * 60 * 1000;
+                    const today = new Date();
+                    
+                    const tomorrow = new Date(goal.doBy);
+                    console.log(typeof tomorrow);
+
+                    const daysLeft = Math.ceil(Math.abs((today-tomorrow)/oneDay));
+                    console.log(daysLeft);
+                    
+                    const final = tomorrow.toDateString();
+                    console.log(final);
+                    
+                    $(`#daysLeft-${goal.id}`).append(daysLeft);
+                    $(`#goalDate-${goal.id}`).append(final);
+            
+                            
+                    
+                    
 
                 const options = {
                     chart: {
