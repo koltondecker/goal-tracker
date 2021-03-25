@@ -34,9 +34,6 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 isDate: true,
-                notNull: {
-                    msg: "You must include a date"
-                }
             },
         }
     });

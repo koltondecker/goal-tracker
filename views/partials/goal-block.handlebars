@@ -5,28 +5,31 @@
     <h6 id="goalDate-{{id}}">Completion date: </h6>
     <h6 id="daysLeft-{{id}}">Days to complete: </h6>
     <div id="chart-{{id}}" class="card-content">
+    </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">Goal Editor<i class="material-icons right">close</i></span>
-      <form class="col l12 s12">
-                <div class="input-field col s12">
-                    <input id="newGoalName-{{id}}" type="text" value="{{goalName}}">
-                    <label for="newGoalName">Goal Name</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="newGoalNumber-{{id}}" type="number" value="{{goalNumber}}">
-                    <label for="newGoalNumber">Goal Number</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="newGoalDoBy-{{id}}" type="date">
-                    <label for="newGoalDoBy">Goal Do By Date</label>
-                </div>
-                <button class="btn waves-effect waves-light green saveChangesBtn" type="submit" name="action" data-goalId="{{id}}">Save changes
-                    <i class="material-icons right">add</i>
-                </button>
-            </form>
+        <span class="card-title grey-text text-darken-4">Goal Editor<i class="material-icons right">close</i></span>
+        <form class="col l12 s12">
+            <div class="input-field col s12">
+                <input id="newGoalName-{{id}}" type="text" value="{{goalName}}">
+                <label for="newGoalName">Goal Name</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="newGoalNumber-{{id}}" type="number" value="{{goalNumber}}">
+                <label for="newGoalNumber">Goal Number</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="newGoalDoBy-{{id}}" type="date">
+                <label for="newGoalDoBy">Goal Do By Date</label>
+            </div>
+            <button class="btn waves-effect waves-light green saveChangesBtn" type="submit" name="action"
+                data-goalId="{{id}}">Save changes
+                <i class="material-icons right">add</i>
+            </button>
+        </form>
     </div>
     <div class="buttonsDiv">
-    <a class="add-milestone-button btn waves-light green" data-goalId="{{id}}">Add a Milestone</a>
-    <button type="submit" class=" btn waves-effect waves-light red deleteGoalBtn" data-goalId="{{id}}">Delete Goal</button>
+        <a class="add-milestone-button btn waves-light green" data-goalId="{{id}}">Add a Milestone</a>
+        <button type="submit" class=" btn waves-effect waves-light red deleteGoalBtn" data-goalId="{{id}}">Delete
+            Goal</button>
     </div>
 </div>

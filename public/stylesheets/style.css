@@ -101,10 +101,9 @@ p {
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 0px;
+  padding: 20px;
   /* border: 1px solid #888; */
-  width: 50vw;
-  height: 50vh;
+  width: 80%;
 }
 
 /* The Close Button */
