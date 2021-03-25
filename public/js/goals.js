@@ -71,7 +71,7 @@ $(document).ready(() => {
                 };
                 
                 
-                const now = moment().format("MMMM Do YYYY");
+                const now = moment().utcOffset(5).format("MMMM Do YYYY");
                 const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
 
                 const isNow = moment();
