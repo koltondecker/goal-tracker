@@ -5,6 +5,7 @@ $(document).ready(() => {
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
     // const expandGoalBtn = document.querySelector(".goal-button");
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
+    const editGoalBtns = document.querySelectorAll(".editGoalBtn");
 
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -160,6 +161,29 @@ $(document).ready(() => {
             });
         });
         
+    }
+
+    if(editGoalBtns) {
+        editGoalBtns.forEach((editBtn) => {
+            editBtn.addEventListener("click", (e) => {
+                console.log("hi");
+                fetch(`/api/update_goal/${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`, {
+                    // method: "PUT",
+                    // headers: {
+                    //     Accept: "application/json",
+                    //     "Content-Type": "application/json",
+                    // },
+                    // body: JSON.stringify(e),
+                });
+            });
+                // .then(() => {
+                //     console.log("Updating goal");
+                //     window.location.href = `/api/dashboard?goal_id=${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`;
+                // })
+                // .catch((error) => {
+                //     console.log("Error:", error);
+                // });
+        });
     }
 
 });
