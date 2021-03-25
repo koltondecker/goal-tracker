@@ -38,6 +38,8 @@ require("./routes/api-routes.js")(app);
 //   sequelize.sync({ force: false});
 // });
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 });
+
+// comment

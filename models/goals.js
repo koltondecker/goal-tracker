@@ -1,17 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     //define goals model (table)
     const Goal = sequelize.define("Goal", {
-        // userId: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     unique: true,
-        //     validate: {
-        //         isNumber: true,
-        //         notNull: {
-        //             msg: "User ID must be an integer"
-        //         },
-        //     }
-        // },
+
         goalName: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -30,11 +20,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         doBy: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
             validate: {
-                isDate: true
-            }
+                isDate: true,
+            },
         }
     });
     // Associating goals with milestones table
