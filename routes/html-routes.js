@@ -26,6 +26,7 @@ module.exports = function(app) {
       where: {
         UserId: req.user.id
       },
+      order: [["doBy", "ASC"]],
       include: [db.Milestone]
     })
     .then((response) => {

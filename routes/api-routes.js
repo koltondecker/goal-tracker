@@ -70,7 +70,8 @@ module.exports = function (app) {
     db.Goal.findAll({
       where: {
         UserId: req.user.id
-      }
+      },
+      order: [["doBy", "ASC"]]
     })
     .then((response) => {
       res.json(response);

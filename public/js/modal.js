@@ -2,7 +2,6 @@ const modal = document.getElementById("goalModal");
 
 // Get the button that opens the modal
 const btns = document.querySelectorAll(".add-milestone-button");
-console.log(btns);
 
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];

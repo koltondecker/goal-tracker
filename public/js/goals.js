@@ -6,6 +6,18 @@ $(document).ready(() => {
     // const expandGoalBtn = document.querySelector(".goal-button");
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
     const saveChangesBtn = document.querySelectorAll(".saveChangesBtn");
+    const now = moment().format("MMMM Do YYYY, h:mm:ss a");
+    
+    $("#current-date-and-time").text(now);
+
+    const updateDateAndTime = () => {
+        setInterval(() => {
+            const now = moment().format("MMMM Do YYYY, h:mm:ss a");
+            $("#current-date-and-time").text(now);
+        }, 1000);
+    };
+    
+    updateDateAndTime();
 
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -69,9 +81,7 @@ $(document).ready(() => {
                     return percentComplete;
 
                 };
-                
-                
-                const now = moment().format("MMMM Do YYYY");
+
                 const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
 
                 const isNow = moment();

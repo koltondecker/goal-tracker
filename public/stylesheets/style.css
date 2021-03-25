@@ -29,6 +29,11 @@ p {
   width: 100%;
 }
 
+#current-date-and-time {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;

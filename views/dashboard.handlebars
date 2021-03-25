@@ -15,7 +15,14 @@
 </nav>
 <div class="row">
     <div class="container">
-        <div class="col-md-12 col-md-offset-4">
+        <div class="col l12 center-align">
+            <div id="current-date-and-time"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <div class="col l6 col-md-12 col-md-offset-4">
             <h4>Welcome, {{firstName}} {{lastName}}!</h4>
         </div>
     </div>
@@ -34,7 +41,7 @@
                     <label for="newGoalNumber">Goal Number</label>
                 </div>
                 <div class="input-field col s12">
-                    <input id="newGoalDoBy" type="date">
+                    <input id="newGoalDoBy" type="date" class="datepicker">
                     <label for="newGoalDoBy">Goal Do By Date</label>
                 </div>
                 <button id="newGoalSubmitBtn" class="btn waves-effect waves-light green" type="submit" name="action">Add
@@ -82,9 +89,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script type="text/javascript" src="math.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script type="text/javascript" src="./js/members.js"></script>
 <script type="text/javascript" src="./js/goals.js"></script>
 <script type="text/javascript" src="./js/milestones.js"></script>
 <script type="text/javascript" src="./js/modal.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
