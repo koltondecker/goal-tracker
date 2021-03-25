@@ -133,7 +133,13 @@ module.exports = function (app) {
 
   //Put route for updating goal
   app.put("/api/update_goal/:id", (req, res) => {
-    db.Goal.update(req.body, {
+    db.Goal.update(
+      {
+        goalName: req.body.goalName,
+        goalNumber: parseInt(req.body.goalNumber),
+        doBy: new Date(req.body.doBy)
+      }, 
+      {
       where: {
         id: req.params.id,
       },

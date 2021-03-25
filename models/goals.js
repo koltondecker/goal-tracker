@@ -35,7 +35,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: false,
             validate: {
-                isDate: true
+                isDate: true,
+                notNull: {
+                    msg: "You must include a date"
+                }
             },
             get() {
                 return moment(this.getDataValue("doBy")).format("MMMM Do, YYYY");
