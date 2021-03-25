@@ -1,5 +1,3 @@
-const moment = require("moment");
-
 module.exports = function (sequelize, DataTypes) {
     //define goals model (table)
     const Goal = sequelize.define("Goal", {
