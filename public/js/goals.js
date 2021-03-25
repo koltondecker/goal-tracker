@@ -70,25 +70,17 @@ $(document).ready(() => {
 
                 };
                 
-                // const daysRemaining = () => {
-                    const oneDay= 24 * 60 * 60 * 1000;
-                    const today = new Date();
-                    
-                    const tomorrow = new Date(goal.doBy);
-                    console.log(typeof tomorrow);
+                
+                const now = moment().format("MMMM Do YYYY");
+                const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
 
-                    const daysLeft = Math.ceil(Math.abs((today-tomorrow)/oneDay));
-                    console.log(daysLeft);
-                    
-                    const final = tomorrow.toDateString();
-                    console.log(final);
+                const isNow = moment();
+                const goalDate = moment(goal.doBy);
+
+                const daysLeft = goalDate.diff(isNow, "days");
                     
                     $(`#daysLeft-${goal.id}`).append(daysLeft);
-                    $(`#goalDate-${goal.id}`).append(final);
-            
-                            
-                    
-                    
+                    $(`#goalDate-${goal.id}`).append(dueDate);
 
                 const options = {
                     chart: {
