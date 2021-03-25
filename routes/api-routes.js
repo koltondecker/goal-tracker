@@ -138,7 +138,7 @@ module.exports = function (app) {
       {
         goalName: req.body.goalName,
         goalNumber: parseInt(req.body.goalNumber),
-        doBy: new Date(req.body.doBy)
+        doBy: req.body.doBy
       }, 
       {
       where: {
