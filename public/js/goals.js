@@ -78,8 +78,9 @@ $(document).ready(() => {
                 const goalDate = moment(goal.doBy);
 
                 const daysLeft = goalDate.diff(isNow, "days");
+                console.log(daysLeft);
                     
-                    $(`#daysLeft-${goal.id}`).append(daysLeft);
+                    $(`#daysLeft-${goal.id}`).append(daysLeft +1 );
                     $(`#goalDate-${goal.id}`).append(dueDate);
 
                 const options = {
