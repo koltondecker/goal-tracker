@@ -23,6 +23,7 @@ $(document).ready(() => {
         });
         
         const insertMilestone = (GoalId, MilestoneQuantity, MilestoneDoneBy) => {
+            console.log(parseInt(GoalId), parseInt(MilestoneQuantity), new Date(MilestoneDoneBy));
             $.post("/api/new_Milestone", {
                 GoalId: GoalId,
                 MilestoneQuantity: MilestoneQuantity,
@@ -36,13 +37,5 @@ $(document).ready(() => {
         };
         
     }
-
-    // if(addMilestoneBtn) {
-    //     addMilestoneBtn.addEventListener("click", (e) => {
-    //         e.preventDefault();
-
-
-    //     });
-    // }
 
 });

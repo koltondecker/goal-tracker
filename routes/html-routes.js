@@ -7,20 +7,10 @@ const db = require("../models");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the dashboard page
-    // if (req.user) {
-    //   res.redirect("/dashboard");
-    // }
-    // res.sendFile(path.join(__dirname, "../public/index.html"));
     res.render("index", {});
   });
 
   app.get("/login", (req, res) => {
-    // If the user already has an account send them to the dashboard page
-    // if (req.user) {
-    //   res.redirect("/dashboard");
-    // }
-    // res.sendFile(path.join(__dirname, "../public/login.html"));
     res.render("login");
   });
 
