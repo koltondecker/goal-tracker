@@ -61,12 +61,20 @@ $(document).ready(() => {
                 // const daysRemaining = () => {
                     const oneDay= 24 * 60 * 60 * 1000;
                     const today = new Date();
-                    // console.log(goal.doBy);
-                    const tomorrow = new Date("March 30, 2021");
-                    console.log(tomorrow);
+                    
+                    const tomorrow = new Date(goal.doBy);
+                    console.log(typeof tomorrow);
 
-                    const daysTilDeadline = Math.round(Math.abs((today-tomorrow)/oneDay));
-                    console.log(daysTilDeadline);
+                    const daysLeft = Math.ceil(Math.abs((today-tomorrow)/oneDay));
+                    console.log(daysLeft);
+                    
+                    const final = tomorrow.toDateString();
+                    console.log(final);
+                    
+                    $(`#daysLeft-${goal.id}`).append(daysLeft);
+                    $(`#goalDate-${goal.id}`).append(final);
+            
+                            
                     
                     
 

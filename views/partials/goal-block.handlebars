@@ -1,31 +1,10 @@
 <div class="card">
     <h3 class="">{{goalName}}</h3>
-    <h6>My target: {{goalNumber}}</h6>
-    <h6>Target date: {{doBy}}</h6>
-    <h6>Days left to achieve goal: {{goalName}}</h6>
+    <h6>My goal: {{goalNumber}}</h6>
+    <h6 id="goalDate-{{id}}">Completion date: </h6>
+    <h6 id="daysLeft-{{id}}">Days to complete: </h6>
     <div id="chart-{{id}}" class="card-content">
-        {{!-- <div class="modal goalModal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div id="milestones">
-                    <div id="goal-form">
-                        <form>
-                            <div class="mb-3">
-                                <label for="newMilestoneQuantity" class="form-label">Milestone Quantity</label>
-                                <input type="text" class="form-control" id="newMilestoneQuantity">
-                            </div>
-                            <div>
-                                <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
-                                <input type="date" class="form-control" id="newMilestoneDoneBy">
-                            </div>
-                            <button type="submit" class="btn waves-effect waves-light green milestoneSubmitBtn"
-                                data-goalId="{{id}}">Submit
-                                New Milestone</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+
     </div>
     <div class="buttonsDiv">
         <a class="add-milestone-button btn waves-light green" data-goalId="{{id}}">Add a Milestone</a>
