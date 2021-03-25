@@ -77,34 +77,10 @@ $(document).ready(() => {
                 const isNow = moment();
                 const goalDate = moment(goal.doBy);
 
-                console.log(now);
-                console.log(goalDate);
-
                 const daysLeft = goalDate.diff(isNow, "days");
-
-                
-                console.log(goalDate.diff(isNow, "days"));
-
-                
-                
-                    // const oneDay= 24 * 60 * 60 * 1000;
-                    // const today = new Date();
-                    
-                    // const tomorrow = new Date(goal.doBy);
-                    // console.log(typeof tomorrow);
-
-                    // const daysLeft = Math.ceil(Math.abs((today-tomorrow)/oneDay));
-                    // console.log(daysLeft);
-                    
-                    // const final = tomorrow.toDateString();
-                    // console.log(final);
                     
                     $(`#daysLeft-${goal.id}`).append(daysLeft);
                     $(`#goalDate-${goal.id}`).append(dueDate);
-            
-                            
-                    
-                    
 
                 const options = {
                     chart: {
