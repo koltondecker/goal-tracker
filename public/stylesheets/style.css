@@ -81,6 +81,13 @@ p {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
+<<<<<<< HEAD
+  padding-top: 5vh; /* Location of the box */
+  left: 0;
+  top: 10vh;
+  width: 60vw;
+  height: 60vh;
+=======
   padding-top: 15%; /* Location of the box */
   left: 0;
   top: 0;
@@ -88,6 +95,7 @@ p {
   width: 100%;
   height: 100%;
   max-height: 100%;
+>>>>>>> b8d7aac7172d3f731278f65593ebfdfd7dcfdb54
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /*Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
@@ -99,7 +107,8 @@ p {
   margin: auto;
   padding: 0px;
   /* border: 1px solid #888; */
-  width: 60%;
+  width: 50vw;
+  height: 50vh;
 }
 
 /* The Close Button */
@@ -127,4 +136,10 @@ footer.page-footer {
 
 .buttonsDiv {
   padding-bottom:10%
+}
+
+.editGoalBtn {
+  position:relative;
+  margin-left: 80%;
+  margin-top: 4%;
 }

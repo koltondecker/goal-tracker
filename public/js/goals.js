@@ -5,6 +5,7 @@ $(document).ready(() => {
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
     // const expandGoalBtn = document.querySelector(".goal-button");
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
+    const saveChangesBtn = document.querySelectorAll(".saveChangesBtn");
 
     if(newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -69,6 +70,25 @@ $(document).ready(() => {
 
                 };
                 
+                // const daysRemaining = () => {
+                    const oneDay= 24 * 60 * 60 * 1000;
+                    const today = new Date();
+                    
+                    const tomorrow = new Date(goal.doBy);
+                    console.log(typeof tomorrow);
+
+                    const daysLeft = Math.ceil(Math.abs((today-tomorrow)/oneDay));
+                    console.log(daysLeft);
+                    
+                    const final = tomorrow.toDateString();
+                    console.log(final);
+                    
+                    $(`#daysLeft-${goal.id}`).append(daysLeft);
+                    $(`#goalDate-${goal.id}`).append(final);
+            
+                            
+                    
+                    
 
                 const options = {
                     chart: {
@@ -160,6 +180,38 @@ $(document).ready(() => {
             });
         });
         
+    }
+
+    if(saveChangesBtn) {
+        saveChangesBtn.forEach((editBtn) => {
+            editBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
+
+                const updateGoalObj = {
+                    goalName: document.getElementById(`newGoalName-${goalId}`).value.trim(),
+                    goalNumber: document.getElementById(`newGoalNumber-${goalId}`).value.trim(),
+                    doBy: document.getElementById(`newGoalDoBy-${goalId}`).value.trim()
+                };
+
+                fetch(`/api/update_goal/${goalId}`, {
+                    method: "PUT",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(updateGoalObj),
+                })
+                .then(() => {
+                    console.log("Updating goal");
+                    location.reload();
+                })
+                .catch((error) => {
+                    console.log("Error:", error);
+                });
+            });
+
+        });
     }
 
 });
