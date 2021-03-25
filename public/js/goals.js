@@ -81,15 +81,15 @@ $(document).ready(() => {
                     return percentComplete;
 
                 };
-
                 const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
 
                 const isNow = moment();
                 const goalDate = moment(goal.doBy);
 
                 const daysLeft = goalDate.diff(isNow, "days");
+                console.log(daysLeft);
                     
-                    $(`#daysLeft-${goal.id}`).append(daysLeft);
+                    $(`#daysLeft-${goal.id}`).append(daysLeft +1 );
                     $(`#goalDate-${goal.id}`).append(dueDate);
 
                 const options = {
