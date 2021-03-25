@@ -1,3 +1,7 @@
+body {
+  background-color: #ebe9e9;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
