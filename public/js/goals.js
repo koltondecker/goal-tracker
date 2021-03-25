@@ -55,7 +55,18 @@ $(document).ready(() => {
                     const overallGoal = parseInt(goal.goalNumber);
                     const percentComplete = Math.floor((totalCompleted / overallGoal) * 100);
 
-                    return (percentComplete ? percentComplete : 0);
+
+                    if(percentComplete < 0) {
+                        return 0;
+                    }
+                    else if(percentComplete > 100) {
+                        return 100;
+                    } 
+                    else if(!percentComplete) {
+                        return 0;
+                    }
+                    return percentComplete;
+
                 };
                 
                 // const daysRemaining = () => {
