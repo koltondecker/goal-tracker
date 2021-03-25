@@ -32,7 +32,6 @@ $(document).ready(() => {
                 doBy: newGoalDoByEl.value.trim()
             };
 
-
             insertGoal(newGoalData.goalName, newGoalData.goalNumber, newGoalData.doBy);
             newGoalNameEl.value="";
             newGoalNumberEl.value="";
@@ -81,6 +80,7 @@ $(document).ready(() => {
                     return percentComplete;
 
                 };
+
                 const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
 
                 const isNow = moment();
@@ -89,7 +89,7 @@ $(document).ready(() => {
                 const daysLeft = goalDate.diff(isNow, "days");
                 console.log(daysLeft);
                     
-                    $(`#daysLeft-${goal.id}`).append(daysLeft +1 );
+                    $(`#daysLeft-${goal.id}`).append(daysLeft + 1);
                     $(`#goalDate-${goal.id}`).append(dueDate);
 
                 const options = {

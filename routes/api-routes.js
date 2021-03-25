@@ -39,7 +39,7 @@ module.exports = function (app) {
     db.Goal.create({
       goalName: req.body.goalName,
       goalNumber: parseInt(req.body.goalNumber),
-      doBy: new Date(req.body.doBy),
+      doBy: req.body.doBy,
       UserId: req.user.id,
     })
       .then(() => {
@@ -54,7 +54,7 @@ module.exports = function (app) {
   app.post("/api/new_milestone", (req, res) => {
     db.Milestone.create({
       numberDone: parseInt(req.body.MilestoneQuantity),
-      doneBy: new Date(req.body.MilestoneDoneBy),
+      doneBy: req.body.MilestoneDoneBy,
       GoalId: req.body.GoalId
     })
       .then(() => {
