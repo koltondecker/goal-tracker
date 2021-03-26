@@ -13,17 +13,13 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<div class="row">
-    <div class="container">
-        <div class="col l12 center-align">
-            <div id="current-date-and-time"></div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="container">
-        <div class="col l6 col-md-12 col-md-offset-4">
+<div class="container" id="welcome-div">
+    <div class="row">
+        <div class="col l6 s12 left-align">
             <h4>Welcome, {{firstName}} {{lastName}}!</h4>
+        </div>
+        <div class="col l6 s12 right-align">
+            <div id="current-date-and-time"></div>
         </div>
     </div>
 </div>
@@ -31,24 +27,35 @@
     <div class="container">
         <div class="col l6 s12">
             <h5>Set a new goal</h5>
-            <form class="col l12 s12">
-                <div class="input-field col s12">
-                    <input id="newGoalName" type="text">
-                    <label for="newGoalName">Goal Name</label>
+            <div class="card col l12 s12" id="add-goal">
+                <div class="card-content">
+                    <form>
+                        <div class="input-field col s12">
+                            <input id="newGoalName" type="text">
+                            <label for="newGoalName">Goal Name</label>
+                        </div>
+                        <row>
+                            <div class="input-field col s12 m12 l3">
+                                <input id="newGoalNumber" type="number">
+                                <label for="newGoalNumber">How many?</label>
+                            </div>
+                            <div class="input-field col s12 m12 l9">
+                                <input id="newGoalUnit" type="text">
+                                <label for="newGoalUnit">Units of measure? (e.g. miles, lbs)</label>
+                            </div>
+                        </row>
+                        <div class="input-field col s12">
+                            <input id="newGoalDoBy" type="date">
+                            <label for="newGoalDoBy">Goal Do By Date</label>
+                        </div>
+                        <button id="newGoalSubmitBtn" class="btn waves-effect waves-light green" type="submit"
+                            name="action">Add
+                            goal
+                            <i class="material-icons right">add</i>
+                        </button>
+                    </form>
                 </div>
-                <div class="input-field col s12">
-                    <input id="newGoalNumber" type="number">
-                    <label for="newGoalNumber">Goal Number</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="newGoalDoBy" type="date">
-                    <label for="newGoalDoBy">Goal Do By Date</label>
-                </div>
-                <button id="newGoalSubmitBtn" class="btn waves-effect waves-light green" type="submit" name="action">Add
-                    goal
-                    <i class="material-icons right">add</i>
-                </button>
-            </form>
+            </div>
         </div>
     </div>
     <div class="container">

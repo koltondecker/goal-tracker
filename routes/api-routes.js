@@ -39,6 +39,7 @@ module.exports = function (app) {
     db.Goal.create({
       goalName: req.body.goalName,
       goalNumber: parseInt(req.body.goalNumber),
+      units: req.body.units,
       doBy: req.body.doBy,
       UserId: req.user.id,
     })
@@ -86,7 +87,8 @@ module.exports = function (app) {
     db.Milestone.findAll({
       where: {
         GoalId: parseInt(req.params.goalId)
-      }
+      },
+      order: [["doneBy", "ASC"]]
     })
     .then((response) => {
       res.json({response});
@@ -138,6 +140,7 @@ module.exports = function (app) {
       {
         goalName: req.body.goalName,
         goalNumber: parseInt(req.body.goalNumber),
+        units: req.body.units,
         doBy: req.body.doBy
       }, 
       {
