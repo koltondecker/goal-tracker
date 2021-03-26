@@ -1,7 +1,7 @@
 <div class="card">
     <a class="editGoalBtn btn blue activator"><i class="material-icons blue white-text">create</i></a>
     <h3 class="">{{goalName}}</h3>
-    <h6>My goal: {{goalNumber}}</h6>
+    <h6>My goal: {{goalNumber}} {{units}}</h6>
     <h6 id="goalDate-{{id}}">Completion date: </h6>
     <h6 id="daysLeft-{{id}}">Days to complete: </h6>
     <div id="chart-{{id}}" class="card-content">
@@ -15,7 +15,7 @@
             </div>
             <div class="input-field col s12">
                 <input id="newGoalNumber-{{id}}" type="number" value="{{goalNumber}}">
-                <label for="newGoalNumber">Goal Number</label>
+                <label for="newGoalNumber">Goal Number:</label>
             </div>
             <div class="input-field col s12">
                 <input id="newGoalDoBy-{{id}}" type="date">
@@ -32,4 +32,20 @@
         <button type="submit" class=" btn waves-effect waves-light red deleteGoalBtn" data-goalId="{{id}}">Delete
             Goal</button>
     </div>
+    <ul class="collapsible view-all-milestones-button">
+        <li>
+            <div class="collapsible-header" data-goalId="{{id}}"><i class="material-icons">filter_drama</i>View All Milestones</div>
+            <div id="milestone-dropdown-{{id}}" class="collapsible-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Milestone Value</th>
+                            <th>Completed Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-entries-{{id}}"></tbody>
+                </table>
+            </div>
+        </li>
+    </ul>
 </div>
