@@ -13,6 +13,10 @@ body {
   text-align: center;
 }
 
+.collapsible {
+  margin: 0;
+}
+
 .log {
   text-align: left
 }
