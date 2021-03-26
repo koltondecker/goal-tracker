@@ -9,6 +9,13 @@ body {
   padding-bottom: 10%
 }
 
+.login-signup-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+
 .card {
   text-align: center;
 }
