@@ -32,4 +32,20 @@
         <button type="submit" class=" btn waves-effect waves-light red deleteGoalBtn" data-goalId="{{id}}">Delete
             Goal</button>
     </div>
+    <ul class="collapsible view-all-milestones-button">
+        <li>
+            <div class="collapsible-header" data-goalId="{{id}}"><i class="material-icons">filter_drama</i>View All Milestones</div>
+            <div id="milestone-dropdown-{{id}}" class="collapsible-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Milestone Value</th>
+                            <th>Completed Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-entries-{{id}}"></tbody>
+                </table>
+            </div>
+        </li>
+    </ul>
 </div>
