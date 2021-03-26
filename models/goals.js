@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [2, 25],
+                len: [2, 40],
             }
         },
         goalNumber: {
@@ -17,6 +17,13 @@ module.exports = function (sequelize, DataTypes) {
                 notNull: {
                     msg: "Your goal must be an integer"
                 },
+            }
+        },
+        units: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [2, 25],
             }
         },
         doBy: {
