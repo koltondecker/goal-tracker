@@ -14,7 +14,6 @@ $(document).ready(() => {
     };
 
     if (!userData.email || !userData.password) {
-      //TODO: Input message popup code here
       loginError.html("<i class='material-icons'>error_outline</i>&nbsp;Please fill out both email and password.");
     }
     else {
@@ -25,9 +24,6 @@ $(document).ready(() => {
     emailInput.val("");
     passwordInput.val("");
   });
-
-
-//test
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the dashboard page
   function loginUser(email, password) {

@@ -22,7 +22,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true
+        isEmail: true,
+        notNull: {
+          msg: "Email already exists!"
+        }
       }
     },
     // The password cannot be null
