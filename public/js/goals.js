@@ -1,6 +1,7 @@
 $(document).ready(() => {
     const newGoalNameEl = document.getElementById("newGoalName");
     const newGoalNumberEl = document.getElementById("newGoalNumber");
+    const newGoalUnitEl = document.getElementById("newGoalUnit");
     const newGoalDoByEl = document.getElementById("newGoalDoBy");
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
     // const expandGoalBtn = document.querySelector(".goal-button");
@@ -29,19 +30,22 @@ $(document).ready(() => {
             const newGoalData = {
                 goalName: newGoalNameEl.value.trim(),
                 goalNumber: newGoalNumberEl.value.trim(),
+                units: newGoalUnitEl.value.trim(),
                 doBy: newGoalDoByEl.value.trim()
             };
 
-            insertGoal(newGoalData.goalName, newGoalData.goalNumber, newGoalData.doBy);
+            insertGoal(newGoalData.goalName, newGoalData.goalNumber, newGoalData.units, newGoalData.doBy);
             newGoalNameEl.value="";
             newGoalNumberEl.value="";
+            newGoalUnitEl.value="";
             newGoalDoByEl.value="";
         });
         
-        const insertGoal = (goalName, goalNumber, doBy) => {
+        const insertGoal = (goalName, goalNumber, units, doBy) => {
             $.post("/api/new_goal", {
             goalName: goalName,
             goalNumber: goalNumber,
+            units: units,
             doBy: doBy
             })
             .then(() => {
@@ -193,6 +197,7 @@ $(document).ready(() => {
                 const updateGoalObj = {
                     goalName: document.getElementById(`newGoalName-${goalId}`).value.trim(),
                     goalNumber: document.getElementById(`newGoalNumber-${goalId}`).value.trim(),
+                    units: document.getElementById(`newGoalUnit-${goalId}`).value.trim(),
                     doBy: document.getElementById(`newGoalDoBy-${goalId}`).value.trim()
                 };
 
