@@ -45,6 +45,8 @@ $(document).ready(() => {
                 const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
                 const tableEntries = document.getElementById(`table-entries-${goalId}`);
 
+                tableEntries.innerHTML = "";
+
                 $.get(`/api/all_milestones/${goalId}`)
                 .then((milestonesData) => {
 
