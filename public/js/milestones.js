@@ -3,6 +3,7 @@ $(document).ready(() => {
     const newMilestoneQuantityEl = document.getElementById("newMilestoneQuantity");
     const newMilestoneDoneByEl = document.getElementById("newMilestoneDoneBy");
     const submitMilestoneBtn = document.getElementById("submit-button-div");
+    const viewAllMilestonesBtn = document.querySelectorAll(".view-all-milestones-button");
 
     if(submitMilestoneBtn) {
         submitMilestoneBtn.addEventListener("click", (e) => {
@@ -36,6 +37,35 @@ $(document).ready(() => {
                 .catch((err) => console.error(err));
         };
         
+    }
+
+    if(viewAllMilestonesBtn) {
+        viewAllMilestonesBtn.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
+                const tableEntries = document.getElementById(`table-entries-${goalId}`);
+
+                $.get(`/api/all_milestones/${goalId}`)
+                .then((milestonesData) => {
+
+                    milestonesData.response.forEach((milestone) => {
+
+                        const newValueTd = `<td>${milestone.numberDone}</td>`;
+                        const newDateTd = `<td>${milestone.doneBy}</td>`;
+
+                        const html = `
+                        <tr>
+                            ${newValueTd}
+                            ${newDateTd}
+                        </tr>
+                        `;
+
+                        tableEntries.innerHTML += html;
+                    });
+                    
+                });
+            });
+        });
     }
 
 });
