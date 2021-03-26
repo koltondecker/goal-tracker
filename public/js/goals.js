@@ -8,7 +8,7 @@ $(document).ready(() => {
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
     const saveChangesBtn = document.querySelectorAll(".saveChangesBtn");
     const now = moment().format("MMMM Do YYYY, h:mm:ss a");
-    
+
     $("#current-date-and-time").text(now);
 
     const updateDateAndTime = () => {
@@ -17,10 +17,10 @@ $(document).ready(() => {
             $("#current-date-and-time").text(now);
         }, 1000);
     };
-    
+
     updateDateAndTime();
 
-    if(newGoalSubmitBtn) {
+    if (newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
@@ -35,144 +35,138 @@ $(document).ready(() => {
             };
 
             insertGoal(newGoalData.goalName, newGoalData.goalNumber, newGoalData.units, newGoalData.doBy);
-            newGoalNameEl.value="";
-            newGoalNumberEl.value="";
-            newGoalUnitEl.value="";
-            newGoalDoByEl.value="";
+            newGoalNameEl.value = "";
+            newGoalNumberEl.value = "";
+            newGoalUnitEl.value = "";
+            newGoalDoByEl.value = "";
         });
-        
+
         const insertGoal = (goalName, goalNumber, units, doBy) => {
             $.post("/api/new_goal", {
-            goalName: goalName,
-            goalNumber: goalNumber,
-            units: units,
-            doBy: doBy
+                goalName: goalName,
+                goalNumber: goalNumber,
+                units: units,
+                doBy: doBy
             })
-            .then(() => {
-                console.log("success");
-                window.location.replace("/dashboard");
-            })
-            .catch((err) => console.error(err));
+                .then(() => {
+                    console.log("success");
+                    window.location.replace("/dashboard");
+                })
+                .catch((err) => console.error(err));
         };
 
     }
 
     $.get("api/all_goals")
-    .then((goalsData) => {
-        
-        goalsData.forEach((goal) => {
+        .then((goalsData) => {
 
-            $.get(`api/sum_all_milestones/${goal.id}`)
-            .then((milestonesData) => {
+            goalsData.forEach((goal) => {
 
-                const calculatePercentageCompleted = () => {
+                $.get(`api/sum_all_milestones/${goal.id}`)
+                    .then((milestonesData) => {
 
-                    const totalCompleted = parseInt(milestonesData[0].total_completed);
-                    const overallGoal = parseInt(goal.goalNumber);
-                    const percentComplete = Math.floor((totalCompleted / overallGoal) * 100);
+                        const calculatePercentageCompleted = () => {
+
+                            const totalCompleted = parseInt(milestonesData[0].total_completed);
+                            const overallGoal = parseInt(goal.goalNumber);
+                            const percentComplete = Math.floor((totalCompleted / overallGoal) * 100);
 
 
-                    if(percentComplete < 0) {
-                        return 0;
-                    }
-                    else if(percentComplete > 100) {
-                        return 100;
-                    } 
-                    else if(!percentComplete) {
-                        return 0;
-                    }
-                    return percentComplete;
+                            if (percentComplete < 0) {
+                                return 0;
+                            }
+                            else if (percentComplete > 100) {
+                                return 100;
+                            }
+                            else if (!percentComplete) {
+                                return 0;
+                            }
+                            return percentComplete;
 
-                };
+                        };
 
-                const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
+                        const dueDate = moment(goal.doBy).utcOffset(5).format("MMMM Do YYYY");
 
-                const isNow = moment();
-                const goalDate = moment(goal.doBy);
+                        const isNow = moment();
+                        const goalDate = moment(goal.doBy);
 
-                const daysLeft = goalDate.diff(isNow, "days");
-                console.log(daysLeft);
-                    
-                    $(`#daysLeft-${goal.id}`).append(daysLeft + 1);
-                    $(`#goalDate-${goal.id}`).append(dueDate);
+                        const daysLeft = goalDate.diff(isNow, "days");
+                        console.log(daysLeft);
 
-                const options = {
-                    chart: {
-                    height: 280,
-                    type: "radialBar",
-                    },
-                    
-                    series: [calculatePercentageCompleted()],
-                    colors: ["#20E647"],
-                    plotOptions: {
-                    radialBar: {
-                        hollow: {
-                        margin: 0,
-                        size: "70%",
-                        background: "#293450"
-                        },
-                        track: {
-                        dropShadow: {
-                            enabled: true,
-                            top: 2,
-                            left: 0,
-                            blur: 4,
-                            opacity: 0.15
-                        }
-                        },
-                        dataLabels: {
-                        name: {
-                            offsetY: -10,
-                            color: "#fff",
-                            fontSize: "13px"
-                        },
-                        value: {
-                            color: "#fff",
-                            fontSize: "30px",
-                            show: true
-                        }
-                        }
-                    }
-                    },
-                    fill: {
-                    type: "gradient",
-                    gradient: {
-                        shade: "dark",
-                        type: "vertical",
-                        gradientToColors: ["#87D4F9"],
-                        stops: [0, 100]
-                    }
-                    },
-                    stroke: {
-                    lineCap: "round"
-                    },
-                    labels: ["Progress"]
-                };
-                
-                const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
-    
-                chart.render();
+                        $(`#daysLeft-${goal.id}`).append(daysLeft + 1);
+                        $(`#goalDate-${goal.id}`).append(dueDate);
+
+                        const options = {
+                            chart: {
+                                height: 280,
+                                type: "radialBar",
+                            },
+
+                            series: [calculatePercentageCompleted()],
+                            colors: ["#2196f3"],
+                            plotOptions: {
+                                radialBar: {
+                                    hollow: {
+                                        margin: 0,
+                                        size: "70%",
+                                        background: "#293450"
+                                    },
+                                    track: {
+                                        dropShadow: {
+                                            enabled: true,
+                                            top: 2,
+                                            left: 0,
+                                            blur: 4,
+                                            opacity: 0.15
+                                        }
+                                    },
+                                    dataLabels: {
+                                        name: {
+                                            offsetY: -10,
+                                            color: "#fff",
+                                            fontSize: "13px"
+                                        },
+                                        value: {
+                                            color: "#fff",
+                                            fontSize: "30px",
+                                            show: true
+                                        }
+                                    }
+                                }
+                            },
+                            fill: {
+                                type: "gradient",
+                                gradient: {
+                                    shade: "dark",
+                                    type: "vertical",
+                                    gradientToColors: ["#ea80fc"],
+                                    stops: [0, 100]
+                                }
+                            },
+                            stroke: {
+                                lineCap: "round"
+                            },
+                            labels: ["Progress"]
+                        };
+
+                        const chart = new ApexCharts(document.getElementById(`chart-${goal.id}`), options);
+
+                        chart.render();
+                    });
             });
         });
-    });
 
-    // if(expandGoalBtn) {
-    //     expandGoalBtn.addEventListener("click", (e) => {
-    //         e.preventDefault();
+    $("#new-goaldiv").followTo(250);
 
-
-    //     });
-    // }
-
-    if(deleteGoalBtns) {
+    if (deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
             deleteBtn.addEventListener("click", (e) => {
 
                 fetch(`/api/Goal_Delete/${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`, {
                     method: "DELETE",
                     headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
                     }
                 }).then((response, error) => {
 
@@ -185,10 +179,10 @@ $(document).ready(() => {
                 });
             });
         });
-        
+
     }
 
-    if(saveChangesBtn) {
+    if (saveChangesBtn) {
         saveChangesBtn.forEach((editBtn) => {
             editBtn.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -209,13 +203,13 @@ $(document).ready(() => {
                     },
                     body: JSON.stringify(updateGoalObj),
                 })
-                .then(() => {
-                    console.log("Updating goal");
-                    location.reload();
-                })
-                .catch((error) => {
-                    console.log("Error:", error);
-                });
+                    .then(() => {
+                        console.log("Updating goal");
+                        location.reload();
+                    })
+                    .catch((error) => {
+                        console.log("Error:", error);
+                    });
             });
 
         });

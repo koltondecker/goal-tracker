@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background-color: #90a4ae;
+  background-color: #51656e;
   margin: 0 0 100px;
   padding-bottom: 10%
 }
@@ -13,13 +13,17 @@ body {
   text-align: center;
 }
 
+.log {
+  text-align: left
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
 }
 nav ul a,
 nav .brand-logo {
-  color: #444444;
+  color: white;
 }
 
 p {
@@ -33,14 +37,17 @@ p {
 #new-goaldiv {
   position: fixed;
   left: 50%;
+  /* margin-bottom: 50%; */
 }
-/* 
-#my-goalsdiv {
-  overflow: auto;
+
+/* #new-goaldiv.bottom {
+  top: auto;
+	bottom: 50%;
+	position: absolute;
 } */
 
 .sidenav-trigger {
-  color: green;
+  color: light-blue;
 }
 
 .parallax-container {
@@ -77,6 +84,10 @@ p {
 
   #current-date-and-time {
     text-align: center;
+  }
+
+  body {
+    padding-bottom: 80%;
   }
 }
 
@@ -115,6 +126,10 @@ p {
 
   #current-date-and-time {
     text-align: center;
+  }
+
+  body {
+    padding-bottom: 80%;
   }
 }
 
