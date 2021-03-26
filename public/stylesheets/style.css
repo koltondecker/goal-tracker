@@ -1,5 +1,5 @@
 body {
-  background-color: #ebe9e9;
+  background-color: #e0e0e0;
 }
 
 form.signup,
@@ -13,6 +13,10 @@ nav .brand-logo {
 
 p {
   line-height: 2rem;
+}
+
+#welcome-div {
+  margin-top: 1%;
 }
 
 .sidenav-trigger {
@@ -84,6 +88,10 @@ p {
 }
 .icon-block .material-icons {
   font-size: inherit;
+}
+
+#add-goal {
+  margin-top: 0;
 }
 
 .modal {
