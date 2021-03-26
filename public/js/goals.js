@@ -156,7 +156,7 @@ $(document).ready(() => {
             });
         });
 
-    $("#new-goaldiv").followTo(250);
+    // $("#new-goaldiv").followTo(250);
 
     if (deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
