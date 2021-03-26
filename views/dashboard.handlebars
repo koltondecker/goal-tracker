@@ -1,4 +1,4 @@
-<nav class="white" role="navigation">
+<nav class="green accent-3" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="/dashboard" class="brand-logo">Goal Tracker</a>
         <ul class="right hide-on-med-and-down">
@@ -13,20 +13,21 @@
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
-<div class="container" id="welcome-div">
+<div class="container white-text" id="welcome-div">
     <div class="row">
-        <div class="col l6 s12 left-align">
-            <h4>Welcome, {{firstName}} {{lastName}}!</h4>
+        <div class="col l8 s12">
+            <h4>Welcome, {{firstName}}!</h4>
         </div>
-        <div class="col l6 s12 right-align">
+        <div class="col l4 s12">
             <div id="current-date-and-time"></div>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="container">
-        <div class="col l6 s12">
-            <h5>Set a new goal</h5>
+        <div class="col l4 s12" id="new-goaldiv">
+            <h5 class="white-text">Set a new goal</h5>
             <div class="card col l12 s12" id="add-goal">
                 <div class="card-content">
                     <form>
@@ -53,8 +54,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="col l6 s12">
-            <h5>My Current Goals</h5>
+        <div class="col l6 s12" id="my-goalsdiv">
+            <h5 class="white-text">My Current Goals</h5>
             <div id="chartsDiv">
                 {{#each goals}}
                 {{> goal-block}}
@@ -62,26 +63,27 @@
             </div>
         </div>
     </div>
-    <div id="goalModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="milestones">
-                <div id="goal-form">
-                    <form>
-                        <div class="mb-3">
-                            <label for="newMilestoneQuantity" class="form-label">Milestone Quantity</label>
-                            <input type="text" class="form-control" id="newMilestoneQuantity">
-                        </div>
-                        <div>
-                            <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
-                            <input type="date" class="form-control" id="newMilestoneDoneBy">
-                        </div>
-                        <div id="submit-button-div">
-                            <button id="milestoneSubmitBtn" type="submit"
-                                class="btn waves-effect waves-light green btn-block">Submit New Milestone</button>
-                        </div>
-                    </form>
-                </div>
+</div>
+
+<div id="goalModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="milestones">
+            <div id="goal-form">
+                <form>
+                    <div class="mb-3">
+                        <label for="newMilestoneQuantity" class="form-label">Milestone Quantity</label>
+                        <input type="text" class="form-control" id="newMilestoneQuantity">
+                    </div>
+                    <div>
+                        <label for="newMilestoneDoneBy" class="form-label">Milestone Done By</label>
+                        <input type="date" class="form-control" id="newMilestoneDoneBy">
+                    </div>
+                    <div id="submit-button-div">
+                        <button id="milestoneSubmitBtn" type="submit"
+                            class="btn waves-effect waves-light green btn-block">Submit New Milestone</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
