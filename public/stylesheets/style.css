@@ -1,10 +1,16 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-  background-color: #90a4ae    ;
+  background-color: #90a4ae;
+  margin: 0 0 100px;
+  padding-bottom: 10%
 }
 
 .card {
-  background-color: white  ;
-  border-radius: 10%;
+  text-align: center;
 }
 
 form.signup,
@@ -51,6 +57,10 @@ p {
   font-size: 1.5rem;
   margin-top: 1.75rem;
   text-align: right;
+}
+
+.form-group {
+  text-decoration-color: white;
 }
 
 @media only screen and (max-width: 992px) {
@@ -108,10 +118,6 @@ p {
   }
 }
 
-.card {
-  text-align: center;
-}
-
 .milestone-button {
   margin: 15px;
 }
@@ -167,12 +173,12 @@ p {
   cursor: pointer;
 }
 
-footer.page-footer {
-  margin: 0;
-  /* position: fixed;
+footer {
+  position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%; */
+  width: 100%;
+  overflow: hidden;
 }
 
 .buttonsDiv {
