@@ -1,7 +1,7 @@
 <div class="card">
     <a class="editGoalBtn btn blue activator"><i class="material-icons blue white-text">create</i></a>
     <h3 class="">{{goalName}}</h3>
-    <h6>My goal: {{goalNumber}}</h6>
+    <h6>My goal: {{goalNumber}} {{units}}</h6>
     <h6 id="goalDate-{{id}}">Completion date: </h6>
     <h6 id="daysLeft-{{id}}">Days to complete: </h6>
     <div id="chart-{{id}}" class="card-content">
@@ -15,7 +15,7 @@
             </div>
             <div class="input-field col s12">
                 <input id="newGoalNumber-{{id}}" type="number" value="{{goalNumber}}">
-                <label for="newGoalNumber">Goal Number</label>
+                <label for="newGoalNumber">Goal Number:</label>
             </div>
             <div class="input-field col s12">
                 <input id="newGoalDoBy-{{id}}" type="date">

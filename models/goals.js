@@ -19,6 +19,13 @@ module.exports = function (sequelize, DataTypes) {
                 },
             }
         },
+        units: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [2, 25],
+            }
+        },
         doBy: {
             type: DataTypes.DATEONLY,
             allowNull: false,

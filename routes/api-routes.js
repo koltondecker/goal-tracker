@@ -39,6 +39,7 @@ module.exports = function (app) {
     db.Goal.create({
       goalName: req.body.goalName,
       goalNumber: parseInt(req.body.goalNumber),
+      units: req.body.units,
       doBy: req.body.doBy,
       UserId: req.user.id,
     })
@@ -138,6 +139,7 @@ module.exports = function (app) {
       {
         goalName: req.body.goalName,
         goalNumber: parseInt(req.body.goalNumber),
+        units: req.body.units,
         doBy: req.body.doBy
       }, 
       {
