@@ -53,7 +53,7 @@ $(document).ready(() => {
                     milestonesData.response.forEach((milestone) => {
 
                         const newValueTd = `<td>${milestone.numberDone}</td>`;
-                        const newDateTd = `<td>${milestone.doneBy}</td>`;
+                        const newDateTd = `<td>${moment(milestone.doneBy).format("MMMM Do YYYY")}</td>`;
 
                         const html = `
                         <tr>
