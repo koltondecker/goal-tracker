@@ -46,16 +46,13 @@ p {
 }
 
 #new-goaldiv {
-  position: fixed;
-  left: 50%;
-  /* margin-bottom: 50%; */
+  position: sticky;
+  top:100px;
 }
 
-/* #new-goaldiv.bottom {
-  top: auto;
-	bottom: 50%;
-	position: absolute;
-} */
+.goals{
+  margin-left: 16%;
+}
 
 .sidenav-trigger {
   color: light-blue;
@@ -100,6 +97,7 @@ p {
   body {
     padding-bottom: 80%;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -141,6 +139,9 @@ p {
 
   body {
     padding-bottom: 80%;
+  }
+  .goals{
+    margin: 0 auto;
   }
 }
 
