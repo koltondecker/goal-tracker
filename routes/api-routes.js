@@ -87,7 +87,8 @@ module.exports = function (app) {
     db.Milestone.findAll({
       where: {
         GoalId: parseInt(req.params.goalId)
-      }
+      },
+      order: [["doneBy", "ASC"]]
     })
     .then((response) => {
       res.json({response});

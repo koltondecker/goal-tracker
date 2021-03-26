@@ -45,13 +45,15 @@ $(document).ready(() => {
                 const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
                 const tableEntries = document.getElementById(`table-entries-${goalId}`);
 
+                tableEntries.innerHTML = "";
+
                 $.get(`/api/all_milestones/${goalId}`)
                 .then((milestonesData) => {
 
                     milestonesData.response.forEach((milestone) => {
 
                         const newValueTd = `<td>${milestone.numberDone}</td>`;
-                        const newDateTd = `<td>${milestone.doneBy}</td>`;
+                        const newDateTd = `<td>${moment(milestone.doneBy).format("MMMM Do YYYY")}</td>`;
 
                         const html = `
                         <tr>
