@@ -23,7 +23,10 @@ You can do it!
 
 Goal Tracker is a javascript-based web-app deployed on heroku that uses Handlebars, Express, Moment, Apex Charts, and more npm programs to provide the user with a simple, yet effective and polished interface to track, log, and update their goals. 
 
+You can also toggle the view of this page, by the "Toggle View" button in the navigation bar. There is a dark mode and a light mode, to best suit your preferences!
+
 ![Landing Page](/public/img/landing.png)
+![Landing Page 2](/public/img/landing2.png)
 
 The landing page directs the user to create an account. The simple sign in page only asks for your first and last name, a unique username, your email, and a password. The password is then encrypted so even our dev team can't see it. (This protects the user's privacy). If you already have an account, you can click "Log In" to enter only your email and password, and you're good to go!
 
@@ -43,7 +46,7 @@ As you add milestones, these will be logged to the dropdown. All of your progres
 
 ![Milestone View](/public/img/milestones.png)
 
-You can also toggle the view of this page, by the "Toggle View" button in the navigation bar. There is a dark mode and a light mode, to best suit your preferences!
+Also checkout your dashboard in the second view style, to see which you like better!
 
 ![Toggle View](/public/img/toggleview.png)
 
