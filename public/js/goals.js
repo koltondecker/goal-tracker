@@ -156,8 +156,6 @@ $(document).ready(() => {
             });
         });
 
-    $("#new-goaldiv").followTo(250);
-
     if (deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
             deleteBtn.addEventListener("click", (e) => {
