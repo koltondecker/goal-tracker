@@ -17,16 +17,18 @@ You can do it!
 * [Intro](#intro)
 * [Description](#description)
 * [Installaion](#installation)
-* [Usage](#usage)
 * [Credits](#credits)
 
 ## DESCRIPTION
 
 Goal Tracker is a javascript-based web-app deployed on heroku that uses Handlebars, Express, Moment, Apex Charts, and more npm programs to provide the user with a simple, yet effective and polished interface to track, log, and update their goals. 
 
-![Landing Page](/public/img/landing.png)
+You can also toggle the view of this page, by the "Toggle View" button in the navigation bar. There is a dark mode and a light mode, to best suit your preferences!
 
-The landing page directs the user to create an account. The simple sign in page only asks for your first and last name, a uniquie username, your email, and a password. The password is then encrypted so even our dev team can't see it. (This protects the user's privacy). If you already have an account, you can click "Log In" to enter only your email and password, and you're good to go!
+![Landing Page](/public/img/landing.png)
+![Landing Page 2](/public/img/landing2.png)
+
+The landing page directs the user to create an account. The simple sign in page only asks for your first and last name, a unique username, your email, and a password. The password is then encrypted so even our dev team can't see it. (This protects the user's privacy). If you already have an account, you can click "Log In" to enter only your email and password, and you're good to go!
 
 ![Sign Up](/public/img/signup.png)
 ![Log In](/public/img/login.png)
@@ -40,11 +42,11 @@ Once you've entered a goal (or a few), they'll each pop up as a card on the page
 ![Dashboard](/public/img/dashboard.png)
 ![Edit a Goal](/public/img/editgoal.png)
 
-As you add milestones, these will be logged to the dropdown. All of your progress is summed and shown in the progress bar. If you've run 4 out of the 10 miles you've promised, the progress bar will show 40%. 
+As you add milestones, these will be logged to the dropdown. All of your progress is added and shown in the progress bar. If you've run 4 out of the 10 miles you've promised, the progress bar will show 40%. 
 
 ![Milestone View](/public/img/milestones.png)
 
-You can also toggle the view of this page, by the "Toggle View" button in the navigation bar. There is a dark mode and a light mode, to best suit your preferences!
+Also checkout your dashboard in the second view style, to see which you like better!
 
 ![Toggle View](/public/img/toggleview.png)
 
@@ -79,10 +81,10 @@ This application is invoked by entering 'node index.js' into the terminal. Then 
 
 This project was created by our KSCC Dev Team
 
-[Kolton Decker](https://github.com/koltondecker)
-[Steve Babb](https://github.com/verusbabb)
-[Christina Moss](https://github.com/cmoss703)
-[Carly Gouge](https://github.com/cgouge93)
+[Kolton Decker](https://github.com/koltondecker)  
+[Steve Babb](https://github.com/verusbabb)  
+[Christina Moss](https://github.com/cmoss703)  
+[Carly Gouge](https://github.com/cgouge93)  
 
 [Github Repo](https://github.com/koltondecker/goal-tracker)
 
