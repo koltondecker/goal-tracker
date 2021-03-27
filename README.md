@@ -37,12 +37,12 @@ After logging in or signing up, the user is directed to their Dashboard. Here, t
 
 Once you've entered a goal (or a few), they'll each pop up as a card on the page. Here, you can view all the information about your goal, including a progress bar for a visual representation of how far you've come. There are also a couple of buttons on these cards to help you manage the goal. There's a little edit pencil at the top that triggers a card reveal form, allowing you to edit your goal. You can also delete a goal, or add a milestone. There is a dropdown from each card that shows each milestone you've logged.
 
-![Dashboard](/public/img/dashbaord.png)
+![Dashboard](/public/img/dashboard.png)
 ![Edit a Goal](/public/img/editgoal.png)
 
 As you add milestones, these will be logged to the dropdown. All of your progress is summed and shown in the progress bar. If you've run 4 out of the 10 miles you've promised, the progress bar will show 40%. 
 
-![Milestone View](/public/img/dashboard.png)
+![Milestone View](/public/img/milestones.png)
 
 You can also toggle the view of this page, by the "Toggle View" button in the navigation bar. There is a dark mode and a light mode, to best suit your preferences!
 
