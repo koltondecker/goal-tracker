@@ -10,7 +10,6 @@ $(document).ready(() => {
             e.preventDefault();
 
             const goalId = JSON.parse(JSON.stringify(e.target.dataset)).goalid;
-            console.log(goalId);
 
             const newMilestoneData = {
                 GoalId: parseInt(goalId),
@@ -24,7 +23,6 @@ $(document).ready(() => {
         });
         
         const insertMilestone = (GoalId, MilestoneQuantity, MilestoneDoneBy) => {
-            console.log(parseInt(GoalId), parseInt(MilestoneQuantity), new Date(MilestoneDoneBy));
             $.post("/api/new_Milestone", {
                 GoalId: GoalId,
                 MilestoneQuantity: MilestoneQuantity,
