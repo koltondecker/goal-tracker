@@ -5,7 +5,6 @@ module.exports = function (sequelize, DataTypes) {
         numberDone: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true,
             validate: {
                 isInt: true,
                 notNull: {
