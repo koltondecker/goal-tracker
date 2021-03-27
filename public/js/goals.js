@@ -8,6 +8,8 @@ $(document).ready(() => {
     const saveChangesBtn = document.querySelectorAll(".saveChangesBtn");
     const now = moment().format("MMMM Do YYYY, h:mm:ss a");
 
+    $("#newGoalName").characterCounter();
+
     $("#current-date-and-time").text(now);
 
     const updateDateAndTime = () => {
@@ -60,6 +62,8 @@ $(document).ready(() => {
         .then((goalsData) => {
 
             goalsData.forEach((goal) => {
+
+                $(`#newGoalName-${goal.id}`).characterCounter();
 
                 $.get(`api/sum_all_milestones/${goal.id}`)
                     .then((milestonesData) => {
@@ -154,8 +158,6 @@ $(document).ready(() => {
                     });
             });
         });
-
-    // $("#new-goaldiv").followTo(250);
 
     if (deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
