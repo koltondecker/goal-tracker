@@ -6,6 +6,8 @@ $(document).ready(() => {
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
     const saveChangesBtn = document.querySelectorAll(".saveChangesBtn");
+    const toggleThemeBtn = document.querySelector(".btn-toggle");
+    const themeColor = [];
     const now = moment().format("MMMM Do YYYY, h:mm:ss a");
 
     $("#newGoalName").characterCounter();
@@ -20,6 +22,27 @@ $(document).ready(() => {
     };
 
     updateDateAndTime();
+
+    //Theme color check
+    function checkTheme() {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+            themeColor.length = 0;
+            themeColor.push("#ea80fc");
+        }
+        else {
+            themeColor.length = 0;
+            themeColor.push("#FE5F55");
+        }
+    }
+
+    checkTheme();
+
+    toggleThemeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        checkTheme();
+    });
 
     if (newGoalSubmitBtn) {
         newGoalSubmitBtn.addEventListener("click", (e) => {
@@ -98,7 +121,7 @@ $(document).ready(() => {
 
                         $(`#daysLeft-${goal.id}`).append(daysLeft + 1);
                         $(`#goalDate-${goal.id}`).append(dueDate);
-
+                        
                         const options = {
                             chart: {
                                 height: 280,
@@ -142,7 +165,7 @@ $(document).ready(() => {
                                 gradient: {
                                     shade: "dark",
                                     type: "vertical",
-                                    gradientToColors: ["#ea80fc"],
+                                    gradientToColors: themeColor,
                                     stops: [0, 100]
                                 }
                             },
