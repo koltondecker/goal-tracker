@@ -1,6 +1,6 @@
 <div class="card">
-    <a class="editGoalBtn btn purple darken-1 activator"><i
-            class="material-icons purple darken-1 white-text">create</i></a>
+    <a class="editGoalBtn btn activator"><i
+            class="material-icons white-text">create</i></a>
     <h3 class="">{{goalName}}</h3>
     <h6>My goal: {{goalNumber}} {{units}}</h6>
     <h6 id="goalDate-{{id}}">Completion date: </h6>
@@ -35,14 +35,14 @@
         </form>
     </div>
     <div class="buttonsDiv">
-        <a class="add-milestone-button btn waves-light blue" data-goalId="{{id}}">Add a Milestone</a>
+        <a class="add-milestone-button btn waves-light" data-goalId="{{id}}">Add a Milestone</a>
         <button type="submit" class=" btn waves-effect waves-light blue-grey darken-4 deleteGoalBtn"
             data-goalId="{{id}}">Delete
             Goal</button>
     </div>
     <ul class="collapsible view-all-milestones-button">
         <li>
-            <div class="collapsible-header purple darken-1 white-text" data-goalId="{{id}}"><i
+            <div class="collapsible-header btn-large white-text" data-goalId="{{id}}"><i
                     class="material-icons">filter_drama</i>View All Milestones</div>
             <div id="milestone-dropdown-{{id}}" class="collapsible-body">
                 <table>
