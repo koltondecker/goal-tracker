@@ -4,10 +4,11 @@ $(document).ready(() => {
     const newGoalUnitEl = document.getElementById("newGoalUnit");
     const newGoalDoByEl = document.getElementById("newGoalDoBy");
     const newGoalSubmitBtn = document.getElementById("newGoalSubmitBtn");
-    // const expandGoalBtn = document.querySelector(".goal-button");
     const deleteGoalBtns = document.querySelectorAll(".deleteGoalBtn");
     const saveChangesBtn = document.querySelectorAll(".saveChangesBtn");
     const now = moment().format("MMMM Do YYYY, h:mm:ss a");
+
+    $("#newGoalName").characterCounter();
 
     $("#current-date-and-time").text(now);
 
@@ -61,6 +62,8 @@ $(document).ready(() => {
         .then((goalsData) => {
 
             goalsData.forEach((goal) => {
+
+                $(`#newGoalName-${goal.id}`).characterCounter();
 
                 $.get(`api/sum_all_milestones/${goal.id}`)
                     .then((milestonesData) => {
@@ -159,7 +162,7 @@ $(document).ready(() => {
     if (deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
             deleteBtn.addEventListener("click", (e) => {
-
+                console.log("hi");
                 fetch(`/api/Goal_Delete/${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`, {
                     method: "DELETE",
                     headers: {

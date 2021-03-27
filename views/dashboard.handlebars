@@ -1,4 +1,4 @@
-<nav class="light-blue accent-3" role="navigation">
+<nav class="light-blue darken-2" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo">Goal Tracker</a>
         <ul class="right hide-on-med-and-down">
@@ -24,15 +24,14 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="container">
+<div class="row goals">
         <div class="col l4 s12" id="new-goaldiv">
             <h5 class="white-text">Set a new goal</h5>
             <div class="card col l12 s12" id="add-goal">
                 <div class="card-content">
                     <form>
                         <div class="input-field col s12">
-                            <input id="newGoalName" type="text">
+                            <input id="newGoalName" type="text" data-length="40">
                             <label for="newGoalName">Goal Name</label>
                         </div>
                         <row>
@@ -58,9 +57,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="col l6 s12" id="my-goalsdiv">
+        <div class="col l4 s12 offset-l1" id="my-goalsdiv">
             <h5 class="white-text">My Current Goals</h5>
             <div id="chartsDiv">
                 {{#each goals}}
@@ -68,7 +65,7 @@
                 {{/each}}
             </div>
         </div>
-    </div>
+
 </div>
 
 <div id="goalModal" class="modal">
