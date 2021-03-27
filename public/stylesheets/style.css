@@ -12,7 +12,9 @@ body{
   color:white !important;
 } */
 
-
+body.light-theme .btn:hover, body.light-theme .btn-large:hover{
+  background-color:#FE5F55 !important;
+}
 body.light-theme{
   background-color: white;
   margin: 0 0 100px;
@@ -357,6 +359,9 @@ background-image: url("../img/parallax.svg");
   cursor: pointer;
 }
 
+.btn:hover, .btn-large:hover{
+  background-color:#8E24AA !important;
+}
 footer {
   position: absolute;
   left: 0;
