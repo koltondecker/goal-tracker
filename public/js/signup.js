@@ -54,10 +54,5 @@ $(document).ready(() => {
         signupError.html("<i class='material-icons'>error_outline</i>&nbsp;User Account already exists!");
       });
   }
-
-  // function handleLoginErr(err) {
-  //   console.log(err.responseJSON.errors);
-  //   $("#alert .msg").text(err.responseJSON.errors[0].message);
-  //   $("#alert").fadeIn(500);
-  // }
+  
 });

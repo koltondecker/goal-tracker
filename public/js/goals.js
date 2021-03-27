@@ -48,9 +48,6 @@ $(document).ready(() => {
         newGoalSubmitBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
-            console.log("hello world");
-
-
             const newGoalData = {
                 goalName: newGoalNameEl.value.trim(),
                 goalNumber: newGoalNumberEl.value.trim(),
@@ -117,7 +114,6 @@ $(document).ready(() => {
                         const goalDate = moment(goal.doBy);
 
                         const daysLeft = goalDate.diff(isNow, "days");
-                        console.log(daysLeft);
 
                         $(`#daysLeft-${goal.id}`).append(daysLeft + 1);
                         $(`#goalDate-${goal.id}`).append(dueDate);
@@ -185,7 +181,6 @@ $(document).ready(() => {
     if (deleteGoalBtns) {
         deleteGoalBtns.forEach((deleteBtn) => {
             deleteBtn.addEventListener("click", (e) => {
-                console.log("hi");
                 fetch(`/api/Goal_Delete/${JSON.parse(JSON.stringify(e.target.dataset)).goalid}`, {
                     method: "DELETE",
                     headers: {
