@@ -253,7 +253,10 @@ background-image: url("../img/parallax.svg");
   .goals{
     margin: 0 auto;
   }
-}
+  a.brand-logo {
+    font-size: 8vw;
+  } 
+} 
 
 
 @media only screen and (max-width: 600px) {
